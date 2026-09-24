@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "Please cite the accompanying manuscript when using this artifact."
+title: "Strategy Equivalence for Angelic Nondeterministic Workflows: Executable Artifact"
+type: software
+authors:
+  - family-names: Zhang
+    given-names: Haoyi
+  - family-names: Ran
+    given-names: Huaijin
+version: 1.0.0
+date-released: 2026-09-20

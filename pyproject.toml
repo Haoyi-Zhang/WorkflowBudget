@@ -1,0 +1,13 @@
+[project]
+name = "strategy-equivalence-angelic"
+version = "1.0.0"
+description = "Certificates and exhaustive checks for budgeted finite workflow search"
+requires-python = ">=3.11"
+dependencies = []
+authors = [
+  {name = "Haoyi Zhang"},
+  {name = "Huaijin Ran"},
+]
+
+[tool.ruff]
+line-length = 100

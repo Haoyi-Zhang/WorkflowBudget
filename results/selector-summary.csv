@@ -1,0 +1,5 @@
+data_keys,mutation,oracle_worlds,equivalent,budget,states,width
+4,False,64,True,,72,4
+4,True,64,False,8,72,4
+8,False,2048,True,,1432,8
+8,True,2048,False,13,1432,8

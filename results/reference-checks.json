@@ -1,0 +1,17 @@
+{
+  "all_succeeded": true,
+  "checked_on": [
+    "2026-09-16",
+    "2026-09-19"
+  ],
+  "bibliography_entries": 69,
+  "doi_backed_entries": 61,
+  "stable_non_doi_entries": 8,
+  "unique_dois": 61,
+  "audit_rows": 69,
+  "paper_cited_entries": null,
+  "toplas_calibration_entries": 12,
+  "influential_calibration_entries": 5,
+  "adjacent_calibration_entries": 5,
+  "scope": "Offline consistency against the dated verification ledger; not live DOI resolution or an exhaustive novelty search."
+}

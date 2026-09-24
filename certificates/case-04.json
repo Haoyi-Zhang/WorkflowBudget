@@ -1,0 +1,20 @@
+{
+  "kind": "inequivalent",
+  "budget": 1,
+  "world": [
+    0,
+    0
+  ],
+  "nodes": [
+    {
+      "state": [
+        0,
+        0,
+        0,
+        0,
+        []
+      ],
+      "rank": 0
+    }
+  ]
+}

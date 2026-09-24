@@ -1,0 +1,7 @@
+data_keys,mutation,equivalent,least_budget,certificate_nodes,bottleneck_rank,distinct_full_data_valuations,required_by_family,certificate_accepted
+2,False,True,equivalent,16,1,4,4,True
+2,True,False,5,15,1,4,4,True
+4,False,True,equivalent,72,2,16,16,True
+4,True,False,8,71,2,16,16,True
+8,False,True,equivalent,1432,4,256,256,True
+8,True,False,13,1431,4,256,256,True

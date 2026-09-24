@@ -1,0 +1,2 @@
+# The executable artifact uses only the Python standard library.
+# A CPython interpreter satisfying the version in pyproject.toml is sufficient.

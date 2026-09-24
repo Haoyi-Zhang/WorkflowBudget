@@ -1,0 +1,126 @@
+{
+  "clean_copy": true,
+  "standalone_without_paper": true,
+  "commands": [
+    "python3 reproduce.py --quick",
+    "python3 reproduce.py",
+    "python3 src/producer.py inputs/case-04.json <temporary-certificate>",
+    "python3 src/checker.py inputs/case-04.json <temporary-certificate>"
+  ],
+  "quick_execution": {
+    "all_succeeded": true,
+    "canonical_full_results_preserved": true,
+    "child_cpu_seconds": 6.5156160000000005,
+    "commands": 6,
+    "max_child_rss_kib": 98988,
+    "mode": "quick",
+    "wall_seconds": 4.415819795999937,
+    "workers": 1
+  },
+  "quick_non_destructive": {
+    "canonical_files_changed": 0,
+    "diagnostic_directory": "results/quick",
+    "all_succeeded": true
+  },
+  "optimized_python_guard": {
+    "all_succeeded": true,
+    "optimized_python_rejected": true,
+    "exit_code": 1,
+    "message_marker": "claim-critical validation refuses optimized Python"
+  },
+  "full_execution": {
+    "all_succeeded": true,
+    "canonical_full_results_preserved": false,
+    "child_cpu_seconds": 38.510456999999995,
+    "commands": 22,
+    "max_child_rss_kib": 263652,
+    "mode": "full",
+    "wall_seconds": 30.555062148999923,
+    "workers": 1
+  },
+  "semantic_reconciliation": {
+    "result_files_compared": 48,
+    "json_files": 23,
+    "jsonl_files": 16,
+    "csv_files": 8,
+    "tex_files": 1,
+    "raw_rows": 139656,
+    "pair_comparisons": 139648,
+    "additional_ablation_rows": 8,
+    "report_derivations": 5,
+    "theory_derivations": 4,
+    "path_reconciliation_pairs": 131904,
+    "path_depth_set_equalities": 657216,
+    "path_state_occurrences_each_representation": 890465,
+    "path_mismatches": 0,
+    "pilot_inputs": 10,
+    "pilot_certificates": 10,
+    "all_equal": true,
+    "excluded_variable_fields": [
+      "campaign_cpu_seconds",
+      "child_cpu_seconds",
+      "cpu_seconds",
+      "inner_cpu_seconds",
+      "instrumented_inner_cpu_seconds",
+      "instrumented_process_cpu_seconds",
+      "max_child_rss_kib",
+      "max_peak_rss_kib",
+      "peak_rss_kib",
+      "process_cpu_seconds",
+      "wall_seconds"
+    ]
+  },
+  "unit_tests": {
+    "tests_run": 26,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "wall_seconds": 0.021430233000046428,
+    "process_cpu_seconds": 0.832345,
+    "peak_rss_kib": 94376,
+    "workers": 1,
+    "cpu_cap_seconds": 35,
+    "address_space_cap_bytes": 3221225472,
+    "successful": true
+  },
+  "claim_critical_totals": {
+    "certified_oracle_comparisons": 139648,
+    "compiler_traces": 12384,
+    "nonpruning_denotation_checks": 8256,
+    "exact_budget_reduction_instances": 64,
+    "semantic_reduction_instances": 8,
+    "semantic_liveness_nodes": 1584,
+    "semantic_liveness_soundness_violations": 0,
+    "semantic_liveness_strict_nodes": 558,
+    "selector_family_instances": 6,
+    "path_reconciliation_pairs": 131904,
+    "path_depth_set_equalities": 657216,
+    "path_state_occurrences_each_representation": 890465,
+    "path_reconciliation_mismatches": 0
+  },
+  "reference_integrity": {
+    "all_succeeded": true,
+    "checked_on": [
+      "2026-09-16",
+      "2026-09-19"
+    ],
+    "bibliography_entries": 69,
+    "doi_backed_entries": 61,
+    "stable_non_doi_entries": 8,
+    "unique_dois": 61,
+    "audit_rows": 69,
+    "paper_cited_entries": null,
+    "toplas_calibration_entries": 12,
+    "influential_calibration_entries": 5,
+    "adjacent_calibration_entries": 5,
+    "scope": "Offline consistency against the dated verification ledger; not live DOI resolution or an exhaustive novelty search."
+  },
+  "cli_demonstration": {
+    "producer_exit": 0,
+    "checker_exit": 0,
+    "kind": "inequivalent",
+    "budget": 1,
+    "proof_states": 1
+  },
+  "scope": "Clean-copy execution, quick-mode non-mutation, and deterministic semantic-data agreement; not independent scientific review, live resolution of every scholarly identifier, proof-assistant verification, or a general proof."
+}

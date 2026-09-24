@@ -1,0 +1,16 @@
+{
+  "exact_budget_instances": 64,
+  "semantic_reduction_instances": 8,
+  "semantic_liveness_nodes": 1584,
+  "semantic_liveness_soundness_violations": 0,
+  "semantic_liveness_strict_nodes": 558,
+  "selector_family_instances": 6,
+  "failures": 0,
+  "workers": 1,
+  "wall_seconds": 0.11599937100004354,
+  "campaign_cpu_seconds": 0.11600179200000005,
+  "process_cpu_seconds": 1.005758,
+  "peak_rss_kib": 98600,
+  "cpu_cap_seconds": 35,
+  "address_space_cap_bytes": 3221225472
+}

@@ -1,0 +1,16 @@
+{
+  "suite": "workflows",
+  "cases": 7740,
+  "equivalent": 5412,
+  "inequivalent": 2328,
+  "max_states": 8,
+  "max_width": 1,
+  "failures": 0,
+  "workers": 1,
+  "wall_seconds": 1.0778566310000315,
+  "campaign_cpu_seconds": 1.0776773899999998,
+  "process_cpu_seconds": 1.938374,
+  "peak_rss_kib": 93608,
+  "cpu_cap_seconds": 35,
+  "address_space_cap_bytes": 3221225472
+}

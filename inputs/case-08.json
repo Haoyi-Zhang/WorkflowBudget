@@ -1,0 +1,56 @@
+{
+  "left": {
+    "keys": [
+      "x0",
+      "x1"
+    ],
+    "results": [
+      "r0",
+      "r1"
+    ],
+    "start": 0,
+    "nodes": [
+      {
+        "op": "read",
+        "key": 0,
+        "zero": 2,
+        "one": 1
+      },
+      {
+        "op": "emit",
+        "result": 0,
+        "next": 2
+      },
+      {
+        "op": "halt"
+      }
+    ]
+  },
+  "right": {
+    "keys": [
+      "x0",
+      "x1"
+    ],
+    "results": [
+      "r0",
+      "r1"
+    ],
+    "start": 0,
+    "nodes": [
+      {
+        "op": "read",
+        "key": 1,
+        "zero": 2,
+        "one": 1
+      },
+      {
+        "op": "emit",
+        "result": 0,
+        "next": 2
+      },
+      {
+        "op": "halt"
+      }
+    ]
+  }
+}

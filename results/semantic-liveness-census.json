@@ -1,0 +1,9 @@
+{
+  "controller_encodings": 408,
+  "controller_nodes_checked": 1584,
+  "soundness_violations": 0,
+  "nodes_with_strict_overapproximation": 558,
+  "semantic_key_occurrences": 92,
+  "syntactic_future_key_occurrences": 656,
+  "maximum_per_node_gap": 2
+}

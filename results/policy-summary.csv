@@ -1,0 +1,16 @@
+left,right,equivalent,inequivalent,terminal_inequivalent
+fifo,lifo,302,214,0
+fifo,query-first,480,36,0
+fifo,emit-first,408,108,0
+fifo,beam-one,340,176,156
+fifo,first-result,426,90,90
+lifo,query-first,306,210,0
+lifo,emit-first,358,158,0
+lifo,beam-one,282,234,156
+lifo,first-result,302,214,90
+query-first,emit-first,372,144,0
+query-first,beam-one,324,192,156
+query-first,first-result,410,106,90
+emit-first,beam-one,352,164,156
+emit-first,first-result,352,164,90
+beam-one,first-result,398,118,96
