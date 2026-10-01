@@ -1,0 +1,30 @@
+{
+  "scope": "two-node",
+  "domains": [
+    {
+      "nonterminal_nodes": 2,
+      "keys": 2,
+      "controller_encodings": 48,
+      "ordered_pairs": 2304,
+      "worlds_per_pair": 4,
+      "horizon": 3,
+      "depth_set_equalities": 9216,
+      "reduced_state_occurrences": 11854,
+      "concrete_state_occurrences": 11854,
+      "maximum_layer_states": 4,
+      "mismatches": 0
+    }
+  ],
+  "ordered_pairs": 2304,
+  "depth_set_equalities": 9216,
+  "reduced_state_occurrences": 11854,
+  "concrete_state_occurrences": 11854,
+  "mismatches": 0,
+  "workers": 1,
+  "wall_seconds": 0.08506672999988041,
+  "campaign_cpu_seconds": 0.085009275,
+  "process_cpu_seconds": 1.579801,
+  "peak_rss_kib": 93352,
+  "cpu_cap_seconds": 35,
+  "address_space_cap_bytes": 3221225472
+}

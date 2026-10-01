@@ -1,0 +1,9 @@
+formula,satisfiable,distinguished_key,distinguished_semantically_relevant,semantic_key_count,syntactic_future_key_count,semantic_subset_of_syntactic
+true-0,True,0,True,1,1,True
+false-0,False,0,False,0,1,True
+x,True,0,True,2,2,True
+not-x,True,0,True,2,2,True
+contradiction-1,False,0,False,0,2,True
+tautology-1,True,0,True,1,2,True
+xor-like-2,True,0,True,3,3,True
+contradiction-2,False,0,False,0,3,True

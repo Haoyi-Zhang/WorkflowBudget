@@ -60,7 +60,7 @@ def workflows():
     assert len(ws)==516
     worlds=list(product((0,1),repeat=2))
     for i,w in enumerate(ws):
-        cs=[compile_workflow(w,p) for p in POLICIES]
+        cs=[compile_workflow(w,p,key_count=2,result_count=2) for p in POLICIES]
         h=max(len(c['nodes']) for c in cs)
         ts=[[observations(c,v,h) for v in worlds] for c in cs]
         for j,p in enumerate(POLICIES):

@@ -15,7 +15,7 @@ make hardening   # trust-boundary, determinism, and strict-serialization checks
 make delivery    # clean-copy and package-oriented reconciliation
 ```
 
-The full path runs the 24-stage scientific reproduction and then the separate
+The full path runs the 22-command scientific reproduction and then the separate
 reviewer-hardening gate.  A nonzero process exit means the evaluation failed.
 Do not infer success merely from the presence of precomputed files.
 
@@ -23,8 +23,8 @@ Do not infer success merely from the presence of precomputed files.
 
 - exhaustive oracle / producer / checker comparison records;
 - import-independent path reconciliation;
-- finite-domain and join-semilattice generalization checks;
-- exhaustive candidate-certificate meta-validation;
+- exact Boolean common-world path reconciliation;
+- strict checker/producer CLI parsing and deterministic serialization checks;
 - source compilation and termination checks;
 - exact-budget and semantic-key reduction instances;
 - explicit-certificate lower-bound family;

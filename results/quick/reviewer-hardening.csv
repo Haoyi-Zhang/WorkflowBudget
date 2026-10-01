@@ -1,0 +1,7 @@
+check,status,details
+compileall,pass,"{""python_files"":16,""status"":""pass""}"
+static_trust_boundary,pass,"{""checker_direct_imports"":[""__future__"",""argparse"",""itertools"",""json"",""pathlib"",""typing""],""credential_like_assignments"":0,""escaping_symlinks"":0,""forbidden_dynamic_execution"":0,""path_checker_direct_imports"":[""__future__"",""argparse"",""itertools"",""json"",""os"",""pathlib"",""resource"",""time"",""typing""],""python_files_scanned"":16,""shell_true"":0,""status"":""pass""}"
+cli_determinism,pass,"{""byte_identical"":true,""inputs"":1,""producer_runs"":3,""status"":""pass""}"
+strict_cli_parsing,pass,"{""negative_cases"":6,""representative_inputs"":1,""status"":""pass"",""unexpected_acceptances"":0}"
+result_contract,pass,"{""full_comparisons"":null,""path_depth_sets"":9216,""path_pairs"":2304,""pilot_cases"":10,""reference_entries"":69,""result_root"":""results/quick"",""status"":""pass"",""theory_instances"":{""exact_budget"":64,""selector_family"":6,""semantic_liveness_nodes"":1584,""semantic_reduction"":8},""two_node_pairs"":2304,""unit_tests"":27}"
+latex_data_dependencies,not-applicable,"{""paper_present"":false,""status"":""not-applicable""}"

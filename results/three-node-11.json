@@ -7,10 +7,10 @@
   "max_width": 1,
   "failures": 0,
   "workers": 1,
-  "wall_seconds": 0.9292533569998795,
-  "campaign_cpu_seconds": 0.929179411,
-  "process_cpu_seconds": 1.8085060000000002,
-  "peak_rss_kib": 94632,
+  "wall_seconds": 1.851583957999992,
+  "campaign_cpu_seconds": 1.8515088180000001,
+  "process_cpu_seconds": 3.3778610000000002,
+  "peak_rss_kib": 94504,
   "cpu_cap_seconds": 35,
   "address_space_cap_bytes": 3221225472
 }

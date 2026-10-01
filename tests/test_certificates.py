@@ -9,10 +9,11 @@ from examples import curated, pair, H, E, S, R, controller, cnf_controller, all_
 from producer import compare, static_width
 from model import load
 from checker import check, Invalid, read_json
-from oracle import decide, canonical, observations
+from oracle import decide, canonical, observations, workflow_observations
 from negative_controls import chronological, forget_everything, independent_worlds, terminal_only
 from complexity import (exact_budget_pair, cnf_satisfiable, semantically_relevant_keys,
                         semantic_irrelevance_controller)
+from workflows import compile_workflow
 
 
 class Certificates(unittest.TestCase):
@@ -26,6 +27,11 @@ class Certificates(unittest.TestCase):
                 self.assertTrue(check(p,cert)["accepted"])
                 self.assertEqual(canonical(p["left"])==canonical(p["right"]),e)
                 self.assertLessEqual(stats["max_retained_keys"],static_width(p))
+                if name == "case-01":
+                    reranked = copy.deepcopy(cert)
+                    for record in reranked["nodes"]:
+                        record["rank"] = 0
+                    self.assertTrue(check(p, reranked)["accepted"])
 
     def rejected(self,p,c):
         with self.assertRaises(Invalid): check(p,c)
@@ -135,11 +141,41 @@ class Certificates(unittest.TestCase):
         self.assertTrue(check(p,c)["accepted"])
 
     def test_nonzero_entry_and_unreachable_nodes(self):
-        p = pair(S(E(0)),S(E(0)))
-        p["left"]["start"] = 1; p["right"]["start"] = 1
+        node_count = 512
+        nodes = [{"op":"step","next":i+1} for i in range(node_count-1)]
+        nodes.append({"op":"halt"})
+        controller_with_unreachable_prefix = {
+            "keys": [], "results": [], "start": node_count-1, "nodes": nodes,
+        }
+        p = {"left": copy.deepcopy(controller_with_unreachable_prefix),
+             "right": copy.deepcopy(controller_with_unreachable_prefix)}
         c,info = compare(p)
+        verdict = check(p,c)
         self.assertTrue(info["equivalent"])
-        self.assertTrue(check(p,c)["accepted"])
+        self.assertEqual(len(c["nodes"]), 1)
+        self.assertEqual(verdict["proof_states"], 1)
+        self.assertEqual(verdict["checked_transitions"], 1)
+
+    def test_workflow_compiler_alphabet_contract(self):
+        returned = compile_workflow(("return",2), "fifo")
+        self.assertEqual(returned["keys"], [])
+        self.assertEqual(returned["results"], ["r0","r1","r2"])
+        self.assertEqual(returned["nodes"][returned["start"]]["result"], 2)
+        with self.assertRaises(ValueError):
+            compile_workflow(("return",2), "fifo", result_count=2)
+
+        source = ("test",2,("fail",),("return",0))
+        compiled = compile_workflow(source, "fifo")
+        self.assertEqual(compiled["keys"], ["x0","x1","x2"])
+        self.assertEqual(compiled["results"], ["r0"])
+        horizon = len(compiled["nodes"])
+        for world in ((0,0,0),(1,1,0),(0,0,1),(1,1,1)):
+            self.assertEqual(
+                observations(compiled, world, horizon),
+                workflow_observations(source, "fifo", world, horizon),
+            )
+        with self.assertRaises(ValueError):
+            compile_workflow(source, "fifo", key_count=2)
 
     def test_negative_controls(self):
         cases = {x[0]:x[2] for x in curated()}

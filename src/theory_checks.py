@@ -12,8 +12,10 @@ import os
 from pathlib import Path
 import resource
 import time
+import tempfile
+from itertools import product
 
-from checker import check
+from checker import check, read_json
 from complexity import (
     cnf_satisfiable,
     exact_budget_pair,
@@ -21,7 +23,7 @@ from complexity import (
     semantically_relevant_keys,
 )
 from examples import all_forward_controllers, selector_pair
-from model import future
+from model import future, load
 from oracle import decide
 from producer import compare
 
@@ -135,34 +137,143 @@ def semantic_key_checks() -> tuple[list[dict], dict]:
     return formula_rows, census
 
 
+def _advance_equal_data_reads(controller: dict, count: int) -> tuple[int, list[int]]:
+    """Follow ``count`` equal-successor reads and return control plus read keys."""
+    control = controller["start"]
+    seen: list[int] = []
+    for _ in range(count):
+        node = controller["nodes"][control]
+        assert node["op"] == "read"
+        assert node["zero"] == node["one"]
+        seen.append(node["key"])
+        control = node["zero"]
+    return control, seen
+
+
+def _valuation_layer(
+    certificate: dict,
+    *,
+    rank: int,
+    controls: tuple[int, int],
+    data_keys: tuple[int, ...],
+) -> set[tuple[int, ...]]:
+    values: set[tuple[int, ...]] = set()
+    for record in certificate["nodes"]:
+        state = record["state"]
+        if record["rank"] != rank or tuple(state[:2]) != controls:
+            continue
+        memory = tuple((int(key), int(value)) for key, value in state[4])
+        assert tuple(key for key, _ in memory) == data_keys
+        assert state[2] == state[3] == 0
+        values.add(tuple(value for _, value in memory))
+    return values
+
+
 def selector_certificate_checks() -> list[dict]:
+    """Check the exact reverse-order, two-result family used by the artifact.
+
+    The executable family is not self-comparison. The left controller exposes
+    ``x_0,...,x_{k-1}``, the right exposes the reverse order, and the mutated
+    right controller emits ``r1`` where the left emits ``r0``. We check both the
+    earliest full-exposure layer (rank ``k/2``) and the controls reached after
+    both data prefixes (rank ``k``), then round-trip the pair and certificate
+    through the strict JSON readers before checker acceptance.
+    """
     rows: list[dict] = []
     for keys in (2, 4, 8):
+        selector_depth = keys.bit_length() - 1
+        expected_budget = keys + selector_depth + 2
+        expected_assignments = set(product((0, 1), repeat=keys))
+        data_key_tuple = tuple(range(keys))
         for mutation in (False, True):
             pair = selector_pair(keys, mutation)
-            cert, info = compare(pair)
-            accepted = check(pair, cert)
+
+            left_post, left_order = _advance_equal_data_reads(pair["left"], keys)
+            right_post, right_order = _advance_equal_data_reads(pair["right"], keys)
+            assert left_order == list(range(keys))
+            assert right_order == list(reversed(range(keys)))
+            assert (left_post, right_post) == (keys, keys)
+
+            exposure_steps = keys // 2
+            left_exposed, left_prefix = _advance_equal_data_reads(
+                pair["left"], exposure_steps
+            )
+            right_exposed, right_prefix = _advance_equal_data_reads(
+                pair["right"], exposure_steps
+            )
+            assert left_prefix == list(range(exposure_steps))
+            assert right_prefix == list(reversed(range(keys)))[:exposure_steps]
+            assert (left_exposed, right_exposed) == (exposure_steps, exposure_steps)
+
+            certificate, info = compare(pair)
+            oracle = decide(pair)
+            assert info["equivalent"] == (not mutation)
+            assert oracle["equivalent"] == (not mutation)
+            expected_least = expected_budget if mutation else None
+            assert info["budget"] == expected_least
+            assert oracle["budget"] == expected_least
+            assert certificate["kind"] == ("inequivalent" if mutation else "equivalent")
+
+            full_exposure_values = _valuation_layer(
+                certificate,
+                rank=exposure_steps,
+                controls=(left_exposed, right_exposed),
+                data_keys=data_key_tuple,
+            )
+            post_data_values = _valuation_layer(
+                certificate,
+                rank=keys,
+                controls=(left_post, right_post),
+                data_keys=data_key_tuple,
+            )
+            assert full_exposure_values == expected_assignments
+            assert post_data_values == expected_assignments
+
+            with tempfile.TemporaryDirectory(prefix="selector-round-trip-") as td:
+                root = Path(td)
+                pair_path = root / "pair.json"
+                cert_path = root / "certificate.json"
+                pair_path.write_text(
+                    json.dumps(pair, sort_keys=True, separators=(",", ":")) + "\n",
+                    encoding="utf-8",
+                )
+                cert_path.write_text(
+                    json.dumps(certificate, sort_keys=True, separators=(",", ":")) + "\n",
+                    encoding="utf-8",
+                )
+                pair_round_trip = load(pair_path)
+                cert_round_trip = read_json(str(cert_path), 64 * 1024 * 1024)
+                accepted = check(pair_round_trip, cert_round_trip)
             assert accepted["accepted"]
-            full_by_rank: dict[int, set[tuple[tuple[int, int], ...]]] = {}
-            for node in cert["nodes"]:
-                state = node["state"]
-                memory = tuple(tuple(item) for item in state[4])
-                if len(memory) == keys:
-                    full_by_rank.setdefault(node["rank"], set()).add(memory)
-            bottleneck_rank = min(rank for rank, memories in full_by_rank.items()
-                                  if len(memories) == 2 ** keys)
-            valuations = len(full_by_rank[bottleneck_rank])
-            assert valuations == 2 ** keys
+
             rows.append({
+                "family": "reverse-order-dual-result",
                 "data_keys": keys,
-                "mutation": mutation,
+                "selector_keys": selector_depth,
+                "mutation_r0_to_r1": mutation,
+                "certificate_kind": certificate["kind"],
                 "equivalent": info["equivalent"],
-                "least_budget": "equivalent" if info["budget"] is None else info["budget"],
-                "certificate_nodes": len(cert["nodes"]),
-                "bottleneck_rank": bottleneck_rank,
-                "distinct_full_data_valuations": valuations,
+                "expected_least_budget": (
+                    "equivalent" if expected_least is None else expected_least
+                ),
+                "producer_least_budget": (
+                    "equivalent" if info["budget"] is None else info["budget"]
+                ),
+                "oracle_least_budget": (
+                    "equivalent" if oracle["budget"] is None else oracle["budget"]
+                ),
+                "certificate_nodes": len(certificate["nodes"]),
+                "first_full_exposure_rank": exposure_steps,
+                "first_full_exposure_controls": f"{left_exposed}:{right_exposed}",
+                "post_data_rank": keys,
+                "post_data_controls": f"{left_post}:{right_post}",
+                "exact_data_key_set": ";".join(map(str, data_key_tuple)),
+                "first_full_exposure_assignments": len(full_exposure_values),
+                "post_data_assignments": len(post_data_values),
                 "required_by_family": 2 ** keys,
-                "certificate_accepted": accepted["accepted"],
+                "read_orders_checked": True,
+                "json_round_trip_checked": True,
+                "certificate_accepted_after_round_trip": accepted["accepted"],
             })
     return rows
 

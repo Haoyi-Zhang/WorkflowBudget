@@ -2,9 +2,9 @@
   "commands": 22,
   "all_succeeded": true,
   "mode": "full",
-  "child_cpu_seconds": 38.105584,
-  "max_child_rss_kib": 263672,
-  "wall_seconds": 30.008484877,
+  "child_cpu_seconds": 70.990607,
+  "max_child_rss_kib": 263676,
+  "wall_seconds": 63.48847098200008,
   "workers": 1,
   "canonical_full_results_preserved": false
 }

@@ -265,34 +265,29 @@ The syntactic future-read set is a sound overapproximation: a key absent from it
 
 The following lower bound concerns the article's explicit state-record certificate grammar. It is not a lower bound for symbolic algorithms, proof assistants, BDDs, or formats allowed to quantify over valuations.
 
-For `k=2^d`, define a selector controller:
+For `k=2^d`, the executable selector pair uses two result labels. The left controller reads data keys `x_0,...,x_{k-1}` in increasing order; the right reads them in decreasing order. Both outcomes of each data read have the same control successor. Both controllers then read `d` selector keys, re-read the selected `x_i`, and halt on zero. In the equal pair both emit `r0` on one. In the mutation, the right emits `r1` instead.
 
-1. read data keys `x_0,...,x_{k-1}`, taking the same control successor for both outcomes;
-2. read `d` selector keys encoding an index `i`;
-3. re-read `x_i`;
-4. emit the sole result iff that value is one.
-
-Immediately after the data prefix, every `x_i` remains live because a selector continuation may re-read it.
+Immediately after both data prefixes, every `x_i` remains live because a selector continuation may re-read it.
 
 ### Lemma 7.1 (pairwise distinct residuals)
 
-The `2^k` exposed data valuations induce pairwise inequivalent residual observations.
+The `2^k` exposed data valuations induce pairwise inequivalent conditioned residual observations.
 
 **Proof.** Distinct valuations differ at some index `i`. Choose selector bits encoding `i`. The residuals then re-read different stored values and exactly one emits. QED.
 
 ### Theorem 7.2 (positive explicit-certificate lower bound)
 
-Any accepted positive closed-safe-set certificate comparing the selector controller with itself contains at least `2^k` records at the post-data paired control.
+Any accepted positive closed-safe-set certificate for the reverse-order equal-result pair contains at least `2^k` records at the paired selector controls after both data prefixes.
 
-**Proof.** Synchronized self-comparison reads each data key on both sides. For every valuation `a in {0,1}^k`, the product has a reachable safe state at the same paired control with memory exactly `a`; the keys cannot be projected away because they are live. These states are distinct records. Root inclusion and universal closure require every reachable state, so every one must occur. QED.
+**Proof.** For every valuation `a in {0,1}^k`, choose one common world with data restriction `a`. The two data prefixes have the same length and reach the paired selector controls after `k` ticks. Every data key is live there, so the reduced memory is exactly `a`. The exact-path theorem makes all these states reachable. Distinct valuations are distinct concrete records, and root inclusion plus universal closure requires every reachable state. QED.
 
 ### Theorem 7.3 (negative safe-prefix lower bound)
 
-There is a one-result mutated selector pair whose least separating budget is the final emission budget and for which every accepted ranked safe-prefix certificate contains at least `2^k` post-data records.
+For the reverse-order `r0`-to-`r1` mutation, the least separating budget is `k+log2(k)+2`, and every accepted ranked safe-prefix certificate contains at least `2^k` records at the post-data paired controls.
 
-**Proof.** Let the left controller be the selector controller and let the right controller follow the same instruction schedule but never emit at the final instruction. Before that instruction their observations are equal for every world. A world whose selected data bit is one separates at the final instruction, making that budget globally least. Every post-data valuation is reachable at a depth below the least budget. Lemma 4.2 forces every such state into any accepted safe-prefix certificate. QED.
+**Proof.** The `k` data reads, `log2(k)` selector reads, and selected re-read emit nothing, so no earlier budget separates. If the selected data bit is one, the next instruction emits `r0` on the left and `r1` on the right. Hence that budget is globally least. Every post-data valuation is reachable at rank `k`, below the least budget, so Lemma 4.2 forces every such state into an accepted safe prefix. QED.
 
-These results explain the explicit producer's state cap and motivate symbolic certificate formats as future work. They do not contradict the succinct NP witness for inequivalence, because globally least separation adds a universal prefix claim.
+For the measured sizes, all data keys are first exposed after `k/2` synchronized ticks because the two prefixes read disjoint keys in opposite directions. The finite check therefore records bottleneck ranks 1, 2, and 4 for `k=2,4,8`, while also checking the exact post-data controls at rank `k`. It verifies the read orders, exact data-key set, all `2^k` assignments, producer/oracle budget, strict JSON write/read round trip, and checker acceptance. These results explain the explicit producer's state cap and motivate symbolic certificate formats as future work. They do not contradict the succinct NP witness for inequivalence, because globally least separation adds a universal prefix claim.
 
 ## 8. Executable validation boundary
 
@@ -306,6 +301,6 @@ The artifact contains several deliberately separate paths:
 
 For the two complete controller domains, the path reconciler independently enumerates the controller grammar, recomputes future-read masks, constructs reduced reachable state sets, and separately projects every concrete common-world run. It checks exact equality at every depth for 131,904 ordered pairs: 657,216 depth-indexed set equalities comprising 890,465 state occurrences on each side, with no mismatch. This is finite corroboration of the path theorem, not a mechanized proof.
 
-The completed campaign additionally includes 139,648 producer/oracle comparisons, 12,384 direct-interpreter/compiler trace comparisons, 8,256 terminal-denotation comparisons, 64 exact-budget reduction instances, 8 semantic-key reduction instances, a 1,584-node liveness census, 6 selector-certificate family instances, and 26 unit tests. Every recorded comparison agrees and every serialized certificate is accepted. Malformed records and four deliberately wrong relational semantics are rejected or distinguished as specified.
+The completed campaign additionally includes 139,648 producer/oracle comparisons, 12,384 direct-interpreter/compiler trace comparisons, 8,256 terminal-denotation comparisons, 64 exact-budget reduction instances, 8 semantic-key reduction instances, a 1,584-node liveness census, 6 selector-certificate family instances, and 27 unit tests. Every recorded comparison agrees and every serialized certificate is accepted. Malformed records and four deliberately wrong relational semantics are rejected or distinguished as specified.
 
 These finite results support implementation fidelity only. General validity comes from the arguments above; neither the proofs nor the implementation have been independently authored or mechanically verified.

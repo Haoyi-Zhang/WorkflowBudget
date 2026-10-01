@@ -13,7 +13,7 @@ python3 reproduce.py --quick
 python3 reproduce.py
 ```
 
-Quick mode runs six sequential subprocess commands in an isolated temporary copy: the 69-entry bibliography/audit consistency gate, 26 unit tests, ten pilot pairs, all theory-construction checks, a 2,304-pair path-set reconciliation, and 2,304 two-node comparisons. Its diagnostics are copied to `results/quick/`; canonical full-campaign files are not overwritten. Claim-critical campaign/report scripts explicitly reject optimized Python, so `python -O` or `PYTHONOPTIMIZE` cannot silently remove validation assertions. Full mode runs 22 sequential subprocess commands in place: the same gates with the complete 131,904-pair path reconciliation, twelve three-node blocks, the workflow suite, dead-key ablation, selector suite, and report generation. The wrapper stops on a failed command or a 40-second child timeout. Scientific chunks use one worker, a 3 GiB address-space cap, and a 35 CPU-second cap; a cutoff is inconclusive rather than an equivalence verdict.
+Quick mode runs six sequential subprocess commands in an isolated temporary copy: the 69-entry bibliography/audit consistency gate, 27 unit tests, ten pilot pairs, all theory-construction checks, a 2,304-pair path-set reconciliation, and 2,304 two-node comparisons. Its diagnostics are copied to `results/quick/`; canonical full-campaign files are not overwritten. Claim-critical campaign/report scripts explicitly reject optimized Python, so `python -O` or `PYTHONOPTIMIZE` cannot silently remove validation assertions. Full mode runs 22 sequential subprocess commands in place: the same gates with the complete 131,904-pair path reconciliation, twelve three-node blocks, the workflow suite, dead-key ablation, selector suite, and report generation. The wrapper stops on a failed command or a 40-second child timeout. Scientific chunks use one worker, a 3 GiB address-space cap, and a 35 CPU-second cap; a cutoff is inconclusive rather than an equivalence verdict.
 
 Expected full semantic totals are:
 
@@ -25,10 +25,10 @@ Expected full semantic totals are:
 - 8 semantic-key relevance reductions;
 - 1,584 exact-versus-syntactic liveness node checks, with zero containment violations and 558 strict overapproximations;
 - 6 selector certificate-family instances;
-- 26 passing unit tests; and
+- 27 passing unit tests; and
 - 69 bibliography records matched to a dated audit ledger (61 unique DOI-backed entries and eight stable non-DOI records), with all 69 used by the paper and the 12+5+5 calibration sets enforced.
 
-The eight dead-key ablation arm rows, ten curated pilot pairs, and theory-construction records are not added to the 139,648 comparison count. `results/summary.json`, the raw JSONL/JSON/CSV files, and generated table inputs are the evidence. Runtime and peak memory are expected to vary. The delivered `verify_delivery.py` performs a clean-copy audit: it proves that quick mode changes zero canonical files, executes full mode, reconciles 48 deterministic claim-linked files, and accepts the direct case-04 producer-to-checker example. Exact measurements and excluded variable fields are in `results/clean-reproduction.json`. Hosts with a per-command limit shorter than the complete audit may run the same three bounded stages separately:
+The eight dead-key ablation arm rows, ten curated pilot pairs, and theory-construction records are not added to the 139,648 comparison count. `results/summary.json`, the raw JSONL/JSON/CSV files, and generated table inputs are the evidence. Runtime and peak memory are expected to vary. The delivered `verify_delivery.py` performs a clean-copy audit: it proves that quick mode changes zero canonical files, executes full mode, reconciles 50 deterministic claim-linked files, and accepts the direct case-04 producer-to-checker example. Exact measurements and excluded variable fields are in `results/clean-reproduction.json`. Hosts with a per-command limit shorter than the complete audit may run the same three bounded stages separately:
 
 ```sh
 AUDIT_WORKSPACE=../strategy-equivalence-audit-workspace
@@ -64,7 +64,7 @@ Controllers are explicit and acyclic. The implementation admits at most 2,048 no
 | `src/path_checks.py` | Independent complete-small-domain equality of reduced layers and projections of all concrete common-world runs |
 | `src/workflows.py`, `src/examples.py` | Source compiler and deterministic finite generators |
 | `src/complexity.py`, `src/theory_checks.py` | Fixed-length reductions, semantic relevance, liveness census, selector certificate checks |
-| `tests/test_certificates.py` | 26 deterministic tests, including seventeen malformed-input/certificate cases |
+| `tests/test_certificates.py` | 27 deterministic tests, including seventeen malformed-input/certificate cases |
 | `src/negative_controls.py` | Four intentionally wrong comparators used only as counterexamples |
 | `inputs/`, `certificates/` | Ten readable pilot pairs and accepted positive/negative certificates |
 | `results/` | Canonical full rows and derivations, isolated quick diagnostics, plot data, and reproduction records |

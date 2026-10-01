@@ -7,10 +7,10 @@
   "selector_family_instances": 6,
   "failures": 0,
   "workers": 1,
-  "wall_seconds": 0.11599937100004354,
-  "campaign_cpu_seconds": 0.11600179200000005,
-  "process_cpu_seconds": 1.005758,
-  "peak_rss_kib": 98600,
+  "wall_seconds": 0.26199550899991664,
+  "campaign_cpu_seconds": 0.2619381759999999,
+  "process_cpu_seconds": 1.8170709999999999,
+  "peak_rss_kib": 99884,
   "cpu_cap_seconds": 35,
   "address_space_cap_bytes": 3221225472
 }

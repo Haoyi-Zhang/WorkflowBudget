@@ -1,0 +1,139 @@
+{
+  "cases": [
+    {
+      "case": "case-01",
+      "description": "reordered immutable reads",
+      "equivalent": true,
+      "budget": null,
+      "states": 8,
+      "transitions": 11,
+      "max_retained_keys": 2,
+      "oracle_worlds": 4,
+      "certificate_accepted": true,
+      "static_frontier_width": 2
+    },
+    {
+      "case": "case-02",
+      "description": "repeated input consistency",
+      "equivalent": true,
+      "budget": null,
+      "states": 4,
+      "transitions": 5,
+      "max_retained_keys": 1,
+      "oracle_worlds": 4,
+      "certificate_accepted": true,
+      "static_frontier_width": 1
+    },
+    {
+      "case": "case-03",
+      "description": "same-key simultaneous coupling",
+      "equivalent": true,
+      "budget": null,
+      "states": 4,
+      "transitions": 5,
+      "max_retained_keys": 0,
+      "oracle_worlds": 4,
+      "certificate_accepted": true,
+      "static_frontier_width": 0
+    },
+    {
+      "case": "case-04",
+      "description": "clock is observable",
+      "equivalent": false,
+      "budget": 1,
+      "states": 2,
+      "transitions": 1,
+      "max_retained_keys": 0,
+      "oracle_worlds": 4,
+      "certificate_accepted": true,
+      "static_frontier_width": 0
+    },
+    {
+      "case": "case-05",
+      "description": "result identity is observable",
+      "equivalent": false,
+      "budget": 1,
+      "states": 2,
+      "transitions": 1,
+      "max_retained_keys": 0,
+      "oracle_worlds": 4,
+      "certificate_accepted": true,
+      "static_frontier_width": 0
+    },
+    {
+      "case": "case-06",
+      "description": "duplicate outputs are idempotent",
+      "equivalent": true,
+      "budget": null,
+      "states": 3,
+      "transitions": 3,
+      "max_retained_keys": 0,
+      "oracle_worlds": 4,
+      "certificate_accepted": true,
+      "static_frontier_width": 0
+    },
+    {
+      "case": "case-07",
+      "description": "silent suffix is unobservable",
+      "equivalent": true,
+      "budget": null,
+      "states": 4,
+      "transitions": 4,
+      "max_retained_keys": 0,
+      "oracle_worlds": 4,
+      "certificate_accepted": true,
+      "static_frontier_width": 0
+    },
+    {
+      "case": "case-08",
+      "description": "key identity changes outcome function",
+      "equivalent": false,
+      "budget": 2,
+      "states": 6,
+      "transitions": 6,
+      "max_retained_keys": 0,
+      "oracle_worlds": 4,
+      "certificate_accepted": true,
+      "static_frontier_width": 0
+    },
+    {
+      "case": "case-09",
+      "description": "late output cannot be pruned",
+      "equivalent": false,
+      "budget": 3,
+      "states": 4,
+      "transitions": 3,
+      "max_retained_keys": 0,
+      "oracle_worlds": 4,
+      "certificate_accepted": true,
+      "static_frontier_width": 0
+    },
+    {
+      "case": "case-10",
+      "description": "branch-dependent dead input",
+      "equivalent": true,
+      "budget": null,
+      "states": 3,
+      "transitions": 5,
+      "max_retained_keys": 0,
+      "oracle_worlds": 4,
+      "certificate_accepted": true,
+      "static_frontier_width": 0
+    }
+  ],
+  "negative_controls": {
+    "chronological_false_rejection": 3,
+    "premature_forgetting_false_rejection": 3,
+    "independent_worlds_false_rejection": 2,
+    "terminal_only_false_acceptance": true
+  },
+  "resources": {
+    "wall_seconds": 0.007105234000164273,
+    "cpu_seconds": 0.006671465000000154,
+    "process_cpu_seconds": 1.579925,
+    "peak_rss_kib": 93740,
+    "workers": 1,
+    "address_space_cap_bytes": 3221225472,
+    "cpu_limit_seconds": 35
+  }
+}

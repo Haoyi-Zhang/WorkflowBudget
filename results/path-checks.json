@@ -34,10 +34,10 @@
   "concrete_state_occurrences": 890465,
   "mismatches": 0,
   "workers": 1,
-  "wall_seconds": 2.5271467600000506,
-  "campaign_cpu_seconds": 2.5269763849999998,
-  "process_cpu_seconds": 3.402991,
-  "peak_rss_kib": 94116,
+  "wall_seconds": 4.56461956499993,
+  "campaign_cpu_seconds": 4.564084077,
+  "process_cpu_seconds": 6.128559,
+  "peak_rss_kib": 93996,
   "cpu_cap_seconds": 35,
   "address_space_cap_bytes": 3221225472
 }

@@ -128,9 +128,9 @@
     "terminal_only_false_acceptance": true
   },
   "resources": {
-    "wall_seconds": 0.00456311699986145,
-    "cpu_seconds": 0.004202138000000022,
-    "process_cpu_seconds": 0.853698,
+    "wall_seconds": 0.010411836999992374,
+    "cpu_seconds": 0.009656022000000153,
+    "process_cpu_seconds": 1.5800100000000001,
     "peak_rss_kib": 92840,
     "workers": 1,
     "address_space_cap_bytes": 3221225472,

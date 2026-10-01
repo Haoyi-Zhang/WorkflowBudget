@@ -1,0 +1,10 @@
+{
+  "commands": 6,
+  "all_succeeded": true,
+  "mode": "quick",
+  "child_cpu_seconds": 10.913078,
+  "max_child_rss_kib": 100388,
+  "wall_seconds": 8.945848159999969,
+  "workers": 1,
+  "canonical_full_results_preserved": true
+}

@@ -10,11 +10,11 @@
   "quick_execution": {
     "all_succeeded": true,
     "canonical_full_results_preserved": true,
-    "child_cpu_seconds": 6.5156160000000005,
+    "child_cpu_seconds": 11.235790999999999,
     "commands": 6,
-    "max_child_rss_kib": 98988,
+    "max_child_rss_kib": 100264,
     "mode": "quick",
-    "wall_seconds": 4.415819795999937,
+    "wall_seconds": 9.035841937999976,
     "workers": 1
   },
   "quick_non_destructive": {
@@ -31,18 +31,18 @@
   "full_execution": {
     "all_succeeded": true,
     "canonical_full_results_preserved": false,
-    "child_cpu_seconds": 38.510456999999995,
+    "child_cpu_seconds": 71.651585,
     "commands": 22,
-    "max_child_rss_kib": 263652,
+    "max_child_rss_kib": 263664,
     "mode": "full",
-    "wall_seconds": 30.555062148999923,
+    "wall_seconds": 64.05371751800021,
     "workers": 1
   },
   "semantic_reconciliation": {
-    "result_files_compared": 48,
-    "json_files": 23,
+    "result_files_compared": 50,
+    "json_files": 24,
     "jsonl_files": 16,
-    "csv_files": 8,
+    "csv_files": 9,
     "tex_files": 1,
     "raw_rows": 139656,
     "pair_comparisons": 139648,
@@ -71,13 +71,13 @@
     ]
   },
   "unit_tests": {
-    "tests_run": 26,
+    "tests_run": 27,
     "failures": 0,
     "errors": 0,
     "skips": 0,
-    "wall_seconds": 0.021430233000046428,
-    "process_cpu_seconds": 0.832345,
-    "peak_rss_kib": 94376,
+    "wall_seconds": 0.04585647299973061,
+    "process_cpu_seconds": 1.9726049999999997,
+    "peak_rss_kib": 94760,
     "workers": 1,
     "cpu_cap_seconds": 35,
     "address_space_cap_bytes": 3221225472,

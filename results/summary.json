@@ -14,9 +14,9 @@
   "doi_backed_entries": 61,
   "stable_non_doi_entries": 8,
   "reference_checks_passed": true,
-  "instrumented_process_cpu_seconds": 30.792558,
-  "instrumented_inner_cpu_seconds": 15.093390225,
-  "max_peak_rss_kib": 151928,
+  "instrumented_process_cpu_seconds": 59.413179,
+  "instrumented_inner_cpu_seconds": 31.331007614,
+  "max_peak_rss_kib": 151972,
   "suite_count": 18,
   "failures": 0
 }
