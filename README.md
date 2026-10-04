@@ -2,7 +2,7 @@
 
 This standalone, offline research artifact accompanies **Shared-Input Certificates for Budgeted Finite Workflow Search**. It contains an explicit finite-controller semantics, certificate producer, separately implemented checker, exhaustive-world oracle, independent depth-by-depth path reconciler, workflow compiler, deterministic validation campaigns, mathematical proof documentation, and raw claim-linked results.
 
-The artifact is scientifically complete for the declared finite model. It is not an external submission, an acceptance claim, an independently reviewed proof, a proof-assistant development, or evidence about deployed agent systems.
+The artifact is complete for the declared finite model. Its evidence consists of written proofs and finite executable checks without proof-assistant verification; it does not cover deployed agent systems.
 
 ## Reproduce
 
@@ -81,6 +81,5 @@ The two complete controller suites enumerate encodings, including unreachable an
 
 Producer, checker, exhaustive oracle, path-set reconciler, workflow interpreter/compiler, and signature oracle use distinct core execution paths, reducing but not eliminating shared conceptual error. The checker recomputes future sets, successors, closure, ranks, and concrete replay; it is handwritten Python rather than a verified kernel.
 
-ChatGPT was used substantively for formulation, literature work, proof drafting, implementation, testing, execution, analysis, validation, and manuscript preparation. No human-only creation, independent blind review, faculty approval, or formal mechanization is asserted. Human authors must validate intellectual responsibility, proofs, originality, disclosures, and current venue rules before any external use.
 
 Original artifact code, generated data, and documentation are under `LICENSE`. No cited paper, external executable baseline, or third-party dataset is vendored. Reproduction is fully offline and contains no fabricated repository address.
