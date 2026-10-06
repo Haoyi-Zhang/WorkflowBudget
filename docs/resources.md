@@ -1,5 +1,7 @@
 # Resource accounting and reproduction boundary
 
+The measurements below belong to the retained historical Unix run, whose unit suite had 27 methods. They do not certify the current source revision or describe the separate Windows finite rerun of 30 methods. That rerun did not execute the Unix wrappers or measure their resource caps or RSS; full Unix regeneration and clean-copy reconciliation remain to be performed for the changed revision.
+
 The environment intake inspected CPU, memory, swap, and writable space once without a stress test. It exposed a four-core quota and a 4 GiB memory ceiling with no swap. Scientific chunks deliberately use one worker, at most 3 GiB address space, and 35 CPU-seconds per process. No parallel pool, GPU, external scientific compute, model call, network experiment, private service, or new human evidence is used.
 
 The final validation comprises eighteen instrumented suites: the theory-construction suite, independent path-set reconciliation, two-node suite, twelve three-node blocks, workflow suite, dead-key stress suite, and selector suite. `results/summary.json` records 59.413179 process CPU-seconds including process startup, 31.331008 inner campaign CPU-seconds, and 151,972 KiB maximum suite RSS. The ten-case pilot and unit-test process measurements are recorded separately. These figures describe the recorded in-place run, not future hardware or the whole interactive research session.

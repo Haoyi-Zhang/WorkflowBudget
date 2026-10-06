@@ -6,14 +6,14 @@ The artifact is complete for the declared finite model. Its evidence consists of
 
 ## Reproduce
 
-Use Python 3.10 or later on a Unix-like platform that provides Python's `resource` module. No third-party Python package, solver, network connection, GPU, model API, private dataset, account, device, or service is needed. Run from this directory:
+Use Python 3.11 or later on a Unix-like platform that provides Python's `resource` module. No third-party Python package, solver, network connection, GPU, model API, private dataset, account, device, or service is needed. Run from this directory:
 
 ```sh
 python3 reproduce.py --quick
 python3 reproduce.py
 ```
 
-Quick mode runs six sequential subprocess commands in an isolated temporary copy: the 69-entry bibliography/audit consistency gate, 27 unit tests, ten pilot pairs, all theory-construction checks, a 2,304-pair path-set reconciliation, and 2,304 two-node comparisons. Its diagnostics are copied to `results/quick/`; canonical full-campaign files are not overwritten. Claim-critical campaign/report scripts explicitly reject optimized Python, so `python -O` or `PYTHONOPTIMIZE` cannot silently remove validation assertions. Full mode runs 22 sequential subprocess commands in place: the same gates with the complete 131,904-pair path reconciliation, twelve three-node blocks, the workflow suite, dead-key ablation, selector suite, and report generation. The wrapper stops on a failed command or a 40-second child timeout. Scientific chunks use one worker, a 3 GiB address-space cap, and a 35 CPU-second cap; a cutoff is inconclusive rather than an equivalence verdict.
+Quick mode runs six sequential core subprocess commands in an isolated temporary copy: the 69-entry bibliography/audit consistency gate, 30 unit tests, ten pilot pairs, all theory-construction checks, a 2,304-pair path-set reconciliation, and 2,304 two-node comparisons. Its diagnostics are copied to `results/quick/`; canonical full-campaign files are not overwritten. Claim-critical campaign/report scripts explicitly reject optimized Python, so `python -O` or `PYTHONOPTIMIZE` cannot silently remove validation assertions. Full mode runs 22 sequential core subprocess commands in place: the same gates with the complete 131,904-pair path reconciliation, twelve three-node blocks, the workflow suite, dead-key ablation, selector suite, and report generation. The wrapper stops on a failed command or a 40-second child timeout. Both modes then run the separate syntax, CLI and evidence-contract gates. The syntax gate compiles owned source in memory without executing it or writing bytecode files. Scientific chunks use one worker, a 3 GiB address-space cap, and a 35 CPU-second cap; a cutoff is inconclusive rather than an equivalence verdict.
 
 Expected full semantic totals are:
 
@@ -25,7 +25,7 @@ Expected full semantic totals are:
 - 8 semantic-key relevance reductions;
 - 1,584 exact-versus-syntactic liveness node checks, with zero containment violations and 558 strict overapproximations;
 - 6 selector certificate-family instances;
-- 27 passing unit tests; and
+- 30 current passing unit tests (the retained historical Unix record has 27); and
 - 69 bibliography records matched to a dated audit ledger (61 unique DOI-backed entries and eight stable non-DOI records), with all 69 used by the paper and the 12+5+5 calibration sets enforced.
 
 The eight dead-key ablation arm rows, ten curated pilot pairs, and theory-construction records are not added to the 139,648 comparison count. `results/summary.json`, the raw JSONL/JSON/CSV files, and generated table inputs are the evidence. Runtime and peak memory are expected to vary. The delivered `verify_delivery.py` performs a clean-copy audit: it proves that quick mode changes zero canonical files, executes full mode, reconciles 50 deterministic claim-linked files, and accepts the direct case-04 producer-to-checker example. Exact measurements and excluded variable fields are in `results/clean-reproduction.json`. Hosts with a per-command limit shorter than the complete audit may run the same three bounded stages separately:
@@ -37,7 +37,9 @@ python3 verify_delivery.py --stage full --workspace "$AUDIT_WORKSPACE"
 python3 verify_delivery.py --stage reconcile --workspace "$AUDIT_WORKSPACE"
 ```
 
-`src/reference_checks.py` is deliberately offline. It checks the frozen BibTeX against `results/reference-audit.csv`, rejects duplicate and known-misassigned identifiers, verifies the corrected high-risk records, enforces metadata equality and the calibration quotas, and—when invoked by the paper build in no-write mode—requires exactly the same 69 citation keys in the manuscript without mutating the standalone artifact results. The ledger records the publisher/DOI or stable catalog page consulted on 2026-09-16--17, with eleven high-risk or calibration records rechecked on 2026-09-19. This is stronger than a raw reference count, but it is not live DOI resolution or an exhaustive proof that no relevant paper exists.
+`src/reference_checks.py` is deliberately offline. It checks the BibTeX against `results/reference-audit.csv`, rejects duplicate and known-misassigned identifiers, verifies the corrected high-risk records, enforces metadata equality and the calibration quotas, and—when invoked by the paper build in no-write mode—requires exactly the same 69 citation keys in the manuscript without mutating the standalone artifact results. The ledger records publisher/DOI or stable catalog pages consulted on 2026-09-16--17, with eleven high-risk or calibration records rechecked on 2026-09-19. The Godefroid--Wolper CAV 1991 chapter's stale ledger year and DOI were aligned with the supplied BibTeX after checking Springer's record on 2026-10-06: publication year 1992, DOI suffix `_32`. That check used publisher metadata and the abstract, not the full text. Offline consistency is not live resolution of every DOI or an exhaustive novelty search.
+
+The supplied canonical `results/` files, including the 27-method unit record and resource measurements, retain the historical Unix run. The current source adds three regressions and uses iterative shallow instruction interning instead of recursive expression hashing. A separate Windows finite rerun passed all 30 methods and repeated the finite semantic domains with no disagreement. It used the reviewed generator functions with the unused Unix `resource` import omitted, not the Unix wrapper entry points; no Unix CPU/address-space limits or RSS measurements are attributed to it. Run full reproduction on a supported Unix host before using `verify_delivery.py` to reconcile the changed source revision against freshly generated canonical records. The old clean-copy record does not certify that revision.
 
 To produce and check one certificate directly:
 
@@ -64,7 +66,7 @@ Controllers are explicit and acyclic. The implementation admits at most 2,048 no
 | `src/path_checks.py` | Independent complete-small-domain equality of reduced layers and projections of all concrete common-world runs |
 | `src/workflows.py`, `src/examples.py` | Source compiler and deterministic finite generators |
 | `src/complexity.py`, `src/theory_checks.py` | Fixed-length reductions, semantic relevance, liveness census, selector certificate checks |
-| `tests/test_certificates.py` | 27 deterministic tests, including seventeen malformed-input/certificate cases |
+| `tests/test_certificates.py` | 30 deterministic tests, including seventeen malformed-input/certificate cases and three expression/rank regressions |
 | `src/negative_controls.py` | Four intentionally wrong comparators used only as counterexamples |
 | `inputs/`, `certificates/` | Ten readable pilot pairs and accepted positive/negative certificates |
 | `results/` | Canonical full rows and derivations, isolated quick diagnostics, plot data, and reproduction records |

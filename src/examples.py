@@ -9,28 +9,57 @@ def S(t=H): return ("step", t)
 
 
 def controller(expression, keys=2, results=2):
-    """Hash-cons a finite expression, then number nodes topologically."""
+    """Hash-cons a finite expression DAG, then number nodes topologically.
+
+    Visit expression objects once by identity and intern shallow instruction
+    keys after their children. Hashing a nested tuple directly unfolds shared
+    children repeatedly; an equal-successor chain would then cost exponentially
+    in its depth even though its explicit controller is linear in that depth.
+    The iterative postorder also avoids a Python recursion-depth restriction.
+    """
     rows = []
     memo = {}
-    def visit(e):
-        if e in memo:
-            return memo[e]
+    resolved = {}
+    pending = [(expression, False)]
+    while pending:
+        e, ready = pending.pop()
+        if id(e) in resolved:
+            continue
         op = e[0]
         if op == "halt":
-            row = {"op":"halt"}
+            children = ()
         elif op == "read":
-            z,o = visit(e[2]),visit(e[3])
-            row = {"op":"read","key":e[1],"zero":z,"one":o}
+            children = (e[2], e[3])
         elif op == "emit":
-            row = {"op":"emit","result":e[1],"next":visit(e[2])}
+            children = (e[2],)
         elif op == "step":
-            row = {"op":"step","next":visit(e[1])}
+            children = (e[1],)
         else:
             raise ValueError("bad finite expression")
-        memo[e] = len(rows)
-        rows.append(row)
-        return memo[e]
-    entry = visit(expression)
+        if not ready:
+            pending.append((e, True))
+            pending.extend((child, False) for child in reversed(children))
+            continue
+        if op == "halt":
+            signature = (op,)
+            row = {"op":"halt"}
+        elif op == "read":
+            z,o = resolved[id(e[2])],resolved[id(e[3])]
+            signature = (op, e[1], z, o)
+            row = {"op":"read","key":e[1],"zero":z,"one":o}
+        elif op == "emit":
+            target = resolved[id(e[2])]
+            signature = (op, e[1], target)
+            row = {"op":"emit","result":e[1],"next":target}
+        else:
+            target = resolved[id(e[1])]
+            signature = (op, target)
+            row = {"op":"step","next":target}
+        if signature not in memo:
+            memo[signature] = len(rows)
+            rows.append(row)
+        resolved[id(e)] = memo[signature]
+    entry = resolved[id(expression)]
     total = len(rows)
     output = []
     for row in reversed(rows):

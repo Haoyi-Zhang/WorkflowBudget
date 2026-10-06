@@ -78,11 +78,20 @@ def invalid_variants(raw: bytes) -> list[tuple[str, bytes]]:
     return variants
 
 
-def check_compileall() -> dict[str, Any]:
-    proc = run([sys.executable, "-m", "compileall", "-q", str(SRC)])
+def check_python_syntax() -> dict[str, Any]:
+    files = sorted(SRC.rglob("*.py"))
+    # Keep compiler-strength validation (including invalid return/break placement)
+    # without compileall's .pyc writes. This fixed validator only compiles the
+    # owned sources in memory; it never executes the resulting code objects.
+    validator = (
+        "import pathlib,sys; "
+        "[compile(p.read_text(encoding='utf-8'),str(p),'exec') "
+        "for p in sorted(pathlib.Path(sys.argv[1]).rglob('*.py'))]"
+    )
+    proc = run([sys.executable, "-B", "-c", validator, str(SRC)])
     if proc.returncode != 0:
-        raise RuntimeError(f"compileall failed: {proc.stderr}")
-    return {"python_files": len(list(SRC.rglob("*.py"))), "status": "pass"}
+        raise RuntimeError(f"Python source syntax failed: {proc.stderr}")
+    return {"python_files": len(files), "method": "in-memory source compilation", "status": "pass"}
 
 
 def imported_modules(path: Path) -> set[str]:
@@ -184,7 +193,7 @@ def check_strict_cli_parsing(quick: bool) -> dict[str, Any]:
     # The malformed byte patterns exercise parser behavior rather than semantic
     # diversity. Keep the check subprocess-level but use one representative
     # valid pair; structural certificate mutations are covered separately by
-    # the 27-method unit suite.
+    # the 30-method unit suite.
     inputs = find_inputs(1)
     total = 0
     accepted = []
@@ -256,7 +265,7 @@ def check_result_contract(quick: bool) -> dict[str, Any]:
     _require_equal(reference.get("doi_backed_entries"), 61, "DOI-backed entries")
     _require_equal(reference.get("stable_non_doi_entries"), 8, "stable non-DOI entries")
 
-    _require_equal(unit.get("tests_run"), 27, "unit-test methods")
+    _require_equal(unit.get("tests_run"), 30, "unit-test methods")
     _require_equal(unit.get("failures"), 0, "unit-test failures")
     _require_equal(unit.get("errors"), 0, "unit-test errors")
     _require_equal(unit.get("successful"), True, "unit-test success")
@@ -358,7 +367,7 @@ def check_result_contract(quick: bool) -> dict[str, Any]:
     return {
         "result_root": str(base.relative_to(ARTIFACT)),
         "reference_entries": 69,
-        "unit_tests": 27,
+        "unit_tests": 30,
         "pilot_cases": 10,
         "theory_instances": {
             "exact_budget": 64,
@@ -418,7 +427,7 @@ def main(argv: list[str] | None = None) -> int:
     args = ap.parse_args(argv)
     checks: dict[str, Any] = {}
     tasks = (
-        ("compileall", lambda: check_compileall()),
+        ("python_syntax", lambda: check_python_syntax()),
         ("static_trust_boundary", lambda: check_static_trust_boundary()),
         ("cli_determinism", lambda: check_cli_determinism(args.quick)),
         ("strict_cli_parsing", lambda: check_strict_cli_parsing(args.quick)),

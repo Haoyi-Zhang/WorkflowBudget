@@ -16,7 +16,7 @@ from pathlib import Path
 from typing import Dict, Iterable, Tuple
 
 EXPECTED_COUNT = 69
-CHECKED_ON = {"2026-09-16", "2026-09-17", "2026-09-19"}
+CHECKED_ON = {"2026-09-16", "2026-09-17", "2026-09-19", "2026-10-06"}
 
 CORRECTED_DOIS = {
     "li2025encompass": "10.52202/085713-3533",
@@ -24,6 +24,7 @@ CORRECTED_DOIS = {
     "hanus2026monadic": "10.1017/S1471068426100453",
     "antoy2011pulltabbing": "10.1017/S1471068411000263",
     "papadimitriou1984facet": "10.1016/0022-0000(84)90068-0",
+    "godefroid1991partial": "10.1007/3-540-55179-4_32",
 }
 
 KNOWN_BAD_IDENTIFIERS = {
@@ -32,6 +33,7 @@ KNOWN_BAD_IDENTIFIERS = {
     "10.1016/0022-0000(84)90012-3",
     "10.48550/arxiv.2512.03571",
     "10.48550/arxiv.2604.27863",
+    "10.1007/3-540-55179-4_30",
 }
 
 TOPLAS_KEYS = {

@@ -5,10 +5,10 @@ import sys
 import tempfile
 import unittest
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"src"))
-from examples import curated, pair, H, E, S, R, controller, cnf_controller, all_forward_controllers
+from examples import curated, pair, H, E, S, R, controller, cnf_controller, all_forward_controllers, selector_pair
 from producer import compare, static_width
 from model import load
-from checker import check, Invalid, read_json
+from checker import check, Invalid, read_json, inspect_controller, expected_successors
 from oracle import decide, canonical, observations, workflow_observations
 from negative_controls import chronological, forget_everything, independent_worlds, terminal_only
 from complexity import (exact_budget_pair, cnf_satisfiable, semantically_relevant_keys,
@@ -238,5 +238,56 @@ class Certificates(unittest.TestCase):
     def test_resource_cutoff_is_not_equivalence(self):
         p = curated()[0][2]
         with self.assertRaises(RuntimeError): compare(p,max_states=1)
+
+    def test_shared_expression_dag_and_structural_interning(self):
+        expression = E(0)
+        for _ in range(64):
+            expression = R(0,expression,expression)
+        c = controller(expression,keys=1,results=1)
+        self.assertEqual(len(c["nodes"]),66)
+        for node in c["nodes"][:64]:
+            self.assertEqual(node["zero"],node["one"])
+        self.assertEqual(observations(c,(0,),66),observations(c,(1,),66))
+        # Equal but separately allocated expressions must still hash-cons.
+        a,b = S(E(0)),S(E(0))
+        self.assertIsNot(a,b)
+        self.assertEqual(len(controller(R(0,a,b),keys=1,results=1)["nodes"]),4)
+
+    def test_expression_depth_within_controller_admission(self):
+        expression = E(0)
+        for _ in range(1100):
+            expression = S(expression)
+        c = controller(expression,keys=0,results=1)
+        self.assertEqual(len(c["nodes"]),1102)
+        p = {"left":c,"right":c}
+        certificate,info = compare(p)
+        self.assertTrue(info["equivalent"])
+        self.assertTrue(check(p,certificate)["accepted"])
+        self.assertEqual(observations(c,(),1101)[-1],frozenset((0,)))
+
+    def test_negative_ranks_need_not_equal_reachable_depth(self):
+        p = selector_pair(2,mutate=True)
+        certificate,_ = compare(p)
+        l,r = p["left"],p["right"]
+        fl,fr = inspect_controller(l),inspect_controller(r)
+        target = next(record for record in certificate["nodes"]
+                      if record["rank"] == 2 and record["state"][4] == [[0,0],[1,0]])
+        def frozen(state):
+            return (*state[:4],tuple(tuple(binding) for binding in state[4]))
+        # With all data zero, every selector continuation stays safe. Lowering
+        # ranks on this closed component is permitted by the safe-radius rule.
+        pending = [frozen(target["state"])]
+        closed = set()
+        while pending:
+            state = pending.pop()
+            if state in closed:
+                continue
+            closed.add(state)
+            pending.extend(expected_successors(l,r,fl,fr,state))
+        for record in certificate["nodes"]:
+            if frozen(record["state"]) in closed:
+                record["rank"] = 0
+        self.assertEqual(target["rank"],0)
+        self.assertTrue(check(p,certificate)["accepted"])
 
 if __name__ == "__main__": unittest.main()
