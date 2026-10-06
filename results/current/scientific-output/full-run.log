@@ -1,0 +1,296 @@
+RUN /opt/hostedtoolcache/Python/3.12.14/x64/bin/python src/reference_checks.py
+{"adjacent_calibration_entries": 5, "all_succeeded": true, "audit_rows": 69, "bibliography_entries": 69, "checked_on": ["2026-09-16", "2026-09-19", "2026-10-06"], "doi_backed_entries": 61, "influential_calibration_entries": 5, "paper_cited_entries": null, "scope": "Offline consistency against the dated verification ledger; not live DOI resolution or an exhaustive novelty search.", "stable_non_doi_entries": 8, "toplas_calibration_entries": 12, "unique_dois": 61}
+RUN /opt/hostedtoolcache/Python/3.12.14/x64/bin/python src/run_tests.py
+test_changed_input_binding (test_certificates.Certificates.test_changed_input_binding) ... ok
+test_cnf_reduction (test_certificates.Certificates.test_cnf_reduction) ... ok
+test_controller_alphabet_mismatch (test_certificates.Certificates.test_controller_alphabet_mismatch) ... ok
+test_controller_backward_edge (test_certificates.Certificates.test_controller_backward_edge) ... ok
+test_deleted_successor (test_certificates.Certificates.test_deleted_successor) ... ok
+test_duplicate_json_fields (test_certificates.Certificates.test_duplicate_json_fields) ... ok
+test_duplicate_state (test_certificates.Certificates.test_duplicate_state) ... ok
+test_empty_keys_and_results (test_certificates.Certificates.test_empty_keys_and_results) ... ok
+test_exact_budget_dp_reduction (test_certificates.Certificates.test_exact_budget_dp_reduction) ... ok
+test_examples (test_certificates.Certificates.test_examples) ... ok
+test_expression_depth_within_controller_admission (test_certificates.Certificates.test_expression_depth_within_controller_admission) ... ok
+test_extra_fields (test_certificates.Certificates.test_extra_fields) ... ok
+test_false_root (test_certificates.Certificates.test_false_root) ... ok
+test_later_witness_not_shortest (test_certificates.Certificates.test_later_witness_not_shortest) ... ok
+test_negative_controls (test_certificates.Certificates.test_negative_controls) ... ok
+test_negative_ranks_need_not_equal_reachable_depth (test_certificates.Certificates.test_negative_ranks_need_not_equal_reachable_depth) ... ok
+test_non_live_memory (test_certificates.Certificates.test_non_live_memory) ... ok
+test_nondistinguishing_world (test_certificates.Certificates.test_nondistinguishing_world) ... ok
+test_nonzero_entry_and_unreachable_nodes (test_certificates.Certificates.test_nonzero_entry_and_unreachable_nodes) ... ok
+test_omitted_input_binding (test_certificates.Certificates.test_omitted_input_binding) ... ok
+test_out_of_range_mask (test_certificates.Certificates.test_out_of_range_mask) ... ok
+test_rank_cannot_skip_shorter_path (test_certificates.Certificates.test_rank_cannot_skip_shorter_path) ... ok
+test_resource_cutoff_is_not_equivalence (test_certificates.Certificates.test_resource_cutoff_is_not_equivalence) ... ok
+test_semantic_key_relevance_reduction (test_certificates.Certificates.test_semantic_key_relevance_reduction) ... ok
+test_semantic_relevance_is_within_syntactic_future (test_certificates.Certificates.test_semantic_relevance_is_within_syntactic_future) ... ok
+test_shared_expression_dag_and_structural_interning (test_certificates.Certificates.test_shared_expression_dag_and_structural_interning) ... ok
+test_swapped_result_masks (test_certificates.Certificates.test_swapped_result_masks) ... ok
+test_workflow_compiler_alphabet_contract (test_certificates.Certificates.test_workflow_compiler_alphabet_contract) ... ok
+test_world_boolean_not_integer (test_certificates.Certificates.test_world_boolean_not_integer) ... ok
+test_wrong_memory_type (test_certificates.Certificates.test_wrong_memory_type) ... ok
+
+----------------------------------------------------------------------
+Ran 30 tests in 0.057s
+
+OK
+RUN /opt/hostedtoolcache/Python/3.12.14/x64/bin/python src/pilot.py
+{
+  "cases": [
+    {
+      "case": "case-01",
+      "description": "reordered immutable reads",
+      "equivalent": true,
+      "budget": null,
+      "states": 8,
+      "transitions": 11,
+      "max_retained_keys": 2,
+      "oracle_worlds": 4,
+      "certificate_accepted": true,
+      "static_frontier_width": 2
+    },
+    {
+      "case": "case-02",
+      "description": "repeated input consistency",
+      "equivalent": true,
+      "budget": null,
+      "states": 4,
+      "transitions": 5,
+      "max_retained_keys": 1,
+      "oracle_worlds": 4,
+      "certificate_accepted": true,
+      "static_frontier_width": 1
+    },
+    {
+      "case": "case-03",
+      "description": "same-key simultaneous coupling",
+      "equivalent": true,
+      "budget": null,
+      "states": 4,
+      "transitions": 5,
+      "max_retained_keys": 0,
+      "oracle_worlds": 4,
+      "certificate_accepted": true,
+      "static_frontier_width": 0
+    },
+    {
+      "case": "case-04",
+      "description": "clock is observable",
+      "equivalent": false,
+      "budget": 1,
+      "states": 2,
+      "transitions": 1,
+      "max_retained_keys": 0,
+      "oracle_worlds": 4,
+      "certificate_accepted": true,
+      "static_frontier_width": 0
+    },
+    {
+      "case": "case-05",
+      "description": "result identity is observable",
+      "equivalent": false,
+      "budget": 1,
+      "states": 2,
+      "transitions": 1,
+      "max_retained_keys": 0,
+      "oracle_worlds": 4,
+      "certificate_accepted": true,
+      "static_frontier_width": 0
+    },
+    {
+      "case": "case-06",
+      "description": "duplicate outputs are idempotent",
+      "equivalent": true,
+      "budget": null,
+      "states": 3,
+      "transitions": 3,
+      "max_retained_keys": 0,
+      "oracle_worlds": 4,
+      "certificate_accepted": true,
+      "static_frontier_width": 0
+    },
+    {
+      "case": "case-07",
+      "description": "silent suffix is unobservable",
+      "equivalent": true,
+      "budget": null,
+      "states": 4,
+      "transitions": 4,
+      "max_retained_keys": 0,
+      "oracle_worlds": 4,
+      "certificate_accepted": true,
+      "static_frontier_width": 0
+    },
+    {
+      "case": "case-08",
+      "description": "key identity changes outcome function",
+      "equivalent": false,
+      "budget": 2,
+      "states": 6,
+      "transitions": 6,
+      "max_retained_keys": 0,
+      "oracle_worlds": 4,
+      "certificate_accepted": true,
+      "static_frontier_width": 0
+    },
+    {
+      "case": "case-09",
+      "description": "late output cannot be pruned",
+      "equivalent": false,
+      "budget": 3,
+      "states": 4,
+      "transitions": 3,
+      "max_retained_keys": 0,
+      "oracle_worlds": 4,
+      "certificate_accepted": true,
+      "static_frontier_width": 0
+    },
+    {
+      "case": "case-10",
+      "description": "branch-dependent dead input",
+      "equivalent": true,
+      "budget": null,
+      "states": 3,
+      "transitions": 5,
+      "max_retained_keys": 0,
+      "oracle_worlds": 4,
+      "certificate_accepted": true,
+      "static_frontier_width": 0
+    }
+  ],
+  "negative_controls": {
+    "chronological_false_rejection": 3,
+    "premature_forgetting_false_rejection": 3,
+    "independent_worlds_false_rejection": 2,
+    "terminal_only_false_acceptance": true
+  },
+  "resources": {
+    "wall_seconds": 0.012166864000000999,
+    "cpu_seconds": 0.011916790000000003,
+    "process_cpu_seconds": 0.067095,
+    "peak_rss_kib": 15644,
+    "workers": 1,
+    "address_space_cap_bytes": 3221225472,
+    "cpu_limit_seconds": 35
+  }
+}
+RUN /opt/hostedtoolcache/Python/3.12.14/x64/bin/python src/theory_checks.py
+{"address_space_cap_bytes": 3221225472, "campaign_cpu_seconds": 0.29112156299999997, "cpu_cap_seconds": 35, "exact_budget_instances": 64, "failures": 0, "peak_rss_kib": 23480, "process_cpu_seconds": 0.348442, "selector_family_instances": 6, "semantic_liveness_nodes": 1584, "semantic_liveness_soundness_violations": 0, "semantic_liveness_strict_nodes": 558, "semantic_reduction_instances": 8, "wall_seconds": 0.294193731, "workers": 1}
+RUN /opt/hostedtoolcache/Python/3.12.14/x64/bin/python src/path_checks.py all
+{"address_space_cap_bytes": 3221225472, "campaign_cpu_seconds": 5.098505432, "concrete_state_occurrences": 890465, "cpu_cap_seconds": 35, "depth_set_equalities": 657216, "domains": [{"concrete_state_occurrences": 11854, "controller_encodings": 48, "depth_set_equalities": 9216, "horizon": 3, "keys": 2, "maximum_layer_states": 4, "mismatches": 0, "nonterminal_nodes": 2, "ordered_pairs": 2304, "reduced_state_occurrences": 11854, "worlds_per_pair": 4}, {"concrete_state_occurrences": 878611, "controller_encodings": 360, "depth_set_equalities": 648000, "horizon": 4, "keys": 1, "maximum_layer_states": 2, "mismatches": 0, "nonterminal_nodes": 3, "ordered_pairs": 129600, "reduced_state_occurrences": 878611, "worlds_per_pair": 2}], "mismatches": 0, "ordered_pairs": 131904, "peak_rss_kib": 15176, "process_cpu_seconds": 5.134779999999999, "reduced_state_occurrences": 890465, "scope": "all", "wall_seconds": 5.100420292000003, "workers": 1}
+RUN /opt/hostedtoolcache/Python/3.12.14/x64/bin/python src/campaign.py two-node
+{"suite": "two-node", "cases": 2304, "equivalent": 1166, "inequivalent": 1138, "max_states": 7, "max_width": 2, "failures": 0, "workers": 1, "wall_seconds": 0.3644295690000021, "campaign_cpu_seconds": 0.36442571, "process_cpu_seconds": 0.420244, "peak_rss_kib": 16980, "cpu_cap_seconds": 35, "address_space_cap_bytes": 3221225472}
+RUN /opt/hostedtoolcache/Python/3.12.14/x64/bin/python src/campaign.py three-node --block 0
+{"suite": "three-node-00", "cases": 10800, "equivalent": 3358, "inequivalent": 7442, "max_states": 7, "max_width": 1, "failures": 0, "workers": 1, "wall_seconds": 1.7764227489999982, "campaign_cpu_seconds": 1.7760925220000001, "process_cpu_seconds": 1.8313869999999999, "peak_rss_kib": 18004, "cpu_cap_seconds": 35, "address_space_cap_bytes": 3221225472}
+RUN /opt/hostedtoolcache/Python/3.12.14/x64/bin/python src/campaign.py three-node --block 1
+{"suite": "three-node-01", "cases": 10800, "equivalent": 2976, "inequivalent": 7824, "max_states": 6, "max_width": 1, "failures": 0, "workers": 1, "wall_seconds": 1.597470996999995, "campaign_cpu_seconds": 1.597132879, "process_cpu_seconds": 1.654491, "peak_rss_kib": 18004, "cpu_cap_seconds": 35, "address_space_cap_bytes": 3221225472}
+RUN /opt/hostedtoolcache/Python/3.12.14/x64/bin/python src/campaign.py three-node --block 2
+{"suite": "three-node-02", "cases": 10800, "equivalent": 2976, "inequivalent": 7824, "max_states": 6, "max_width": 1, "failures": 0, "workers": 1, "wall_seconds": 1.5636795300000017, "campaign_cpu_seconds": 1.563482238, "process_cpu_seconds": 1.6188550000000002, "peak_rss_kib": 17876, "cpu_cap_seconds": 35, "address_space_cap_bytes": 3221225472}
+RUN /opt/hostedtoolcache/Python/3.12.14/x64/bin/python src/campaign.py three-node --block 3
+{"suite": "three-node-03", "cases": 10800, "equivalent": 5088, "inequivalent": 5712, "max_states": 6, "max_width": 1, "failures": 0, "workers": 1, "wall_seconds": 1.6657919339999978, "campaign_cpu_seconds": 1.665477847, "process_cpu_seconds": 1.721642, "peak_rss_kib": 17720, "cpu_cap_seconds": 35, "address_space_cap_bytes": 3221225472}
+RUN /opt/hostedtoolcache/Python/3.12.14/x64/bin/python src/campaign.py three-node --block 4
+{"suite": "three-node-04", "cases": 10800, "equivalent": 2216, "inequivalent": 8584, "max_states": 7, "max_width": 1, "failures": 0, "workers": 1, "wall_seconds": 1.5313517290000007, "campaign_cpu_seconds": 1.528731866, "process_cpu_seconds": 1.584657, "peak_rss_kib": 17720, "cpu_cap_seconds": 35, "address_space_cap_bytes": 3221225472}
+RUN /opt/hostedtoolcache/Python/3.12.14/x64/bin/python src/campaign.py three-node --block 5
+{"suite": "three-node-05", "cases": 10800, "equivalent": 3386, "inequivalent": 7414, "max_states": 7, "max_width": 1, "failures": 0, "workers": 1, "wall_seconds": 1.8960996100000003, "campaign_cpu_seconds": 1.8957750469999999, "process_cpu_seconds": 1.9548830000000001, "peak_rss_kib": 17876, "cpu_cap_seconds": 35, "address_space_cap_bytes": 3221225472}
+RUN /opt/hostedtoolcache/Python/3.12.14/x64/bin/python src/campaign.py three-node --block 6
+{"suite": "three-node-06", "cases": 10800, "equivalent": 3487, "inequivalent": 7313, "max_states": 7, "max_width": 1, "failures": 0, "workers": 1, "wall_seconds": 1.917819890000004, "campaign_cpu_seconds": 1.9176744600000002, "process_cpu_seconds": 1.9731999999999998, "peak_rss_kib": 18004, "cpu_cap_seconds": 35, "address_space_cap_bytes": 3221225472}
+RUN /opt/hostedtoolcache/Python/3.12.14/x64/bin/python src/campaign.py three-node --block 7
+{"suite": "three-node-07", "cases": 10800, "equivalent": 3712, "inequivalent": 7088, "max_states": 7, "max_width": 1, "failures": 0, "workers": 1, "wall_seconds": 1.9410961199999974, "campaign_cpu_seconds": 1.940810832, "process_cpu_seconds": 1.997706, "peak_rss_kib": 17720, "cpu_cap_seconds": 35, "address_space_cap_bytes": 3221225472}
+RUN /opt/hostedtoolcache/Python/3.12.14/x64/bin/python src/campaign.py three-node --block 8
+{"suite": "three-node-08", "cases": 10800, "equivalent": 4178, "inequivalent": 6622, "max_states": 6, "max_width": 1, "failures": 0, "workers": 1, "wall_seconds": 1.8258912179999953, "campaign_cpu_seconds": 1.825756125, "process_cpu_seconds": 1.8816469999999998, "peak_rss_kib": 17848, "cpu_cap_seconds": 35, "address_space_cap_bytes": 3221225472}
+RUN /opt/hostedtoolcache/Python/3.12.14/x64/bin/python src/campaign.py three-node --block 9
+{"suite": "three-node-09", "cases": 10800, "equivalent": 3555, "inequivalent": 7245, "max_states": 7, "max_width": 1, "failures": 0, "workers": 1, "wall_seconds": 1.8549515680000042, "campaign_cpu_seconds": 1.8548252049999998, "process_cpu_seconds": 1.910261, "peak_rss_kib": 17848, "cpu_cap_seconds": 35, "address_space_cap_bytes": 3221225472}
+RUN /opt/hostedtoolcache/Python/3.12.14/x64/bin/python src/campaign.py three-node --block 10
+{"suite": "three-node-10", "cases": 10800, "equivalent": 4404, "inequivalent": 6396, "max_states": 7, "max_width": 1, "failures": 0, "workers": 1, "wall_seconds": 1.9103859260000036, "campaign_cpu_seconds": 1.910283157, "process_cpu_seconds": 1.9658330000000002, "peak_rss_kib": 17848, "cpu_cap_seconds": 35, "address_space_cap_bytes": 3221225472}
+RUN /opt/hostedtoolcache/Python/3.12.14/x64/bin/python src/campaign.py three-node --block 11
+{"suite": "three-node-11", "cases": 10800, "equivalent": 5474, "inequivalent": 5326, "max_states": 6, "max_width": 1, "failures": 0, "workers": 1, "wall_seconds": 1.8202704639999965, "campaign_cpu_seconds": 1.82011831, "process_cpu_seconds": 1.876157, "peak_rss_kib": 17848, "cpu_cap_seconds": 35, "address_space_cap_bytes": 3221225472}
+RUN /opt/hostedtoolcache/Python/3.12.14/x64/bin/python src/campaign.py workflows
+{"suite": "workflows", "cases": 7740, "equivalent": 5412, "inequivalent": 2328, "max_states": 8, "max_width": 1, "failures": 0, "workers": 1, "wall_seconds": 2.0071617139999987, "campaign_cpu_seconds": 2.0032055439999996, "process_cpu_seconds": 2.079646, "peak_rss_kib": 16556, "cpu_cap_seconds": 35, "address_space_cap_bytes": 3221225472}
+RUN /opt/hostedtoolcache/Python/3.12.14/x64/bin/python src/campaign.py stress
+{"suite": "stress", "cases": 8, "equivalent": 8, "inequivalent": 0, "max_states": 49151, "max_width": 0, "failures": 0, "workers": 1, "wall_seconds": 0.8089784749999964, "campaign_cpu_seconds": 0.8084082749999999, "process_cpu_seconds": 0.8638619999999999, "peak_rss_kib": 73548, "cpu_cap_seconds": 35, "address_space_cap_bytes": 3221225472}
+RUN /opt/hostedtoolcache/Python/3.12.14/x64/bin/python src/campaign.py selectors
+{"suite": "selectors", "cases": 4, "equivalent": 2, "inequivalent": 2, "max_states": 1432, "max_width": 8, "failures": 0, "workers": 1, "wall_seconds": 0.2460404100000062, "campaign_cpu_seconds": 0.24595470300000002, "process_cpu_seconds": 0.304921, "peak_rss_kib": 66256, "cpu_cap_seconds": 35, "address_space_cap_bytes": 3221225472}
+RUN /opt/hostedtoolcache/Python/3.12.14/x64/bin/python src/report.py
+{"certified_oracle_comparisons": 139648, "compiler_world_traces": 12384, "nonpruning_denotation_world_checks": 8256, "exact_budget_reduction_instances": 64, "semantic_reduction_instances": 8, "semantic_liveness_nodes": 1584, "selector_family_instances": 6, "path_reconciliation_pairs": 131904, "path_depth_set_equalities": 657216, "path_state_occurrences": 890465, "path_reconciliation_mismatches": 0, "bibliography_entries": 69, "doi_backed_entries": 61, "stable_non_doi_entries": 8, "reference_checks_passed": true, "instrumented_process_cpu_seconds": 31.122614, "instrumented_inner_cpu_seconds": 30.107781715, "max_peak_rss_kib": 73548, "suite_count": 18, "failures": 0}
+{"all_succeeded": true, "canonical_full_results_preserved": false, "child_cpu_seconds": 32.397627, "commands": 22, "max_child_rss_kib": 183420, "mode": "full", "wall_seconds": 33.090122543, "workers": 1}
+HARDEN python_syntax
+HARDEN static_trust_boundary
+HARDEN cli_determinism
+HARDEN strict_cli_parsing
+HARDEN result_contract
+HARDEN latex_data_dependencies
+{
+  "checks": {
+    "cli_determinism": {
+      "byte_identical": true,
+      "inputs": 10,
+      "producer_runs": 30,
+      "status": "pass"
+    },
+    "latex_data_dependencies": {
+      "paper_present": false,
+      "status": "not-applicable"
+    },
+    "python_syntax": {
+      "method": "in-memory source compilation",
+      "python_files": 16,
+      "status": "pass"
+    },
+    "result_contract": {
+      "full_comparisons": 139648,
+      "path_depth_sets": 657216,
+      "path_pairs": 131904,
+      "pilot_cases": 10,
+      "reference_entries": 69,
+      "result_root": "results",
+      "status": "pass",
+      "theory_instances": {
+        "exact_budget": 64,
+        "selector_family": 6,
+        "semantic_liveness_nodes": 1584,
+        "semantic_reduction": 8
+      },
+      "two_node_pairs": 2304,
+      "unit_tests": 30
+    },
+    "static_trust_boundary": {
+      "checker_direct_imports": [
+        "__future__",
+        "argparse",
+        "itertools",
+        "json",
+        "pathlib",
+        "typing"
+      ],
+      "credential_like_assignments": 0,
+      "escaping_symlinks": 0,
+      "forbidden_dynamic_execution": 0,
+      "path_checker_direct_imports": [
+        "__future__",
+        "argparse",
+        "itertools",
+        "json",
+        "os",
+        "pathlib",
+        "resource",
+        "time",
+        "typing"
+      ],
+      "python_files_scanned": 16,
+      "shell_true": 0,
+      "status": "pass"
+    },
+    "strict_cli_parsing": {
+      "negative_cases": 16,
+      "representative_inputs": 1,
+      "status": "pass",
+      "unexpected_acceptances": 0
+    }
+  },
+  "mode": "full",
+  "schema": 1,
+  "status": "pass"
+}
+Reviewer-hardening gate: PASS (complete entry point)

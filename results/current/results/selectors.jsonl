@@ -1,0 +1,4 @@
+{"budget": null, "certificate_accepted": true, "data_keys": 4, "equivalent": true, "max_retained_keys": 4, "mutation": false, "oracle_agrees": true, "oracle_worlds": 64, "proof_states": 72, "states": 72, "transitions": 111, "width": 4}
+{"budget": 8, "certificate_accepted": true, "data_keys": 4, "equivalent": false, "max_retained_keys": 4, "mutation": true, "oracle_agrees": true, "oracle_worlds": 64, "proof_states": 71, "states": 72, "transitions": 110, "width": 4}
+{"budget": null, "certificate_accepted": true, "data_keys": 8, "equivalent": true, "max_retained_keys": 8, "mutation": false, "oracle_agrees": true, "oracle_worlds": 2048, "proof_states": 1432, "states": 1432, "transitions": 1991, "width": 8}
+{"budget": 13, "certificate_accepted": true, "data_keys": 8, "equivalent": false, "max_retained_keys": 8, "mutation": true, "oracle_agrees": true, "oracle_worlds": 2048, "proof_states": 1431, "states": 1432, "transitions": 1990, "width": 8}

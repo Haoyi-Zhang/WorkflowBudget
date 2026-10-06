@@ -1,0 +1,8 @@
+{"budget": null, "cpu_seconds": 0.0, "equivalent": true, "keys": 4, "live_projection": true, "max_retained_keys": 0, "states": 6, "transitions": 10, "width": 0}
+{"budget": null, "cpu_seconds": 0.0009567600000000009, "equivalent": true, "keys": 4, "live_projection": false, "max_retained_keys": 4, "states": 47, "transitions": 62, "width": 0}
+{"budget": null, "cpu_seconds": 0.0, "equivalent": true, "keys": 8, "live_projection": true, "max_retained_keys": 0, "states": 10, "transitions": 18, "width": 0}
+{"budget": null, "cpu_seconds": 0.008990143999999999, "equivalent": true, "keys": 8, "live_projection": false, "max_retained_keys": 8, "states": 767, "transitions": 1022, "width": 0}
+{"budget": null, "cpu_seconds": 0.0, "equivalent": true, "keys": 12, "live_projection": true, "max_retained_keys": 0, "states": 14, "transitions": 26, "width": 0}
+{"budget": null, "cpu_seconds": 0.14956759, "equivalent": true, "keys": 12, "live_projection": false, "max_retained_keys": 12, "states": 12287, "transitions": 16382, "width": 0}
+{"budget": null, "cpu_seconds": 0.0, "equivalent": true, "keys": 14, "live_projection": true, "max_retained_keys": 0, "states": 16, "transitions": 30, "width": 0}
+{"budget": null, "cpu_seconds": 0.646920618, "equivalent": true, "keys": 14, "live_projection": false, "max_retained_keys": 14, "states": 49151, "transitions": 65534, "width": 0}

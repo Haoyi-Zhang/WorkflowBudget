@@ -1,0 +1,16 @@
+{
+  "suite": "three-node-06",
+  "cases": 10800,
+  "equivalent": 3487,
+  "inequivalent": 7313,
+  "max_states": 7,
+  "max_width": 1,
+  "failures": 0,
+  "workers": 1,
+  "wall_seconds": 1.917819890000004,
+  "campaign_cpu_seconds": 1.9176744600000002,
+  "process_cpu_seconds": 1.9731999999999998,
+  "peak_rss_kib": 18004,
+  "cpu_cap_seconds": 35,
+  "address_space_cap_bytes": 3221225472
+}

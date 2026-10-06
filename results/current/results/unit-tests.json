@@ -1,0 +1,13 @@
+{
+  "tests_run": 30,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "wall_seconds": 0.08457193099999927,
+  "process_cpu_seconds": 0.179414,
+  "peak_rss_kib": 19536,
+  "workers": 1,
+  "cpu_cap_seconds": 35,
+  "address_space_cap_bytes": 3221225472,
+  "successful": true
+}

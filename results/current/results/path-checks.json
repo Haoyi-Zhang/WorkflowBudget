@@ -1,0 +1,43 @@
+{
+  "scope": "all",
+  "domains": [
+    {
+      "nonterminal_nodes": 2,
+      "keys": 2,
+      "controller_encodings": 48,
+      "ordered_pairs": 2304,
+      "worlds_per_pair": 4,
+      "horizon": 3,
+      "depth_set_equalities": 9216,
+      "reduced_state_occurrences": 11854,
+      "concrete_state_occurrences": 11854,
+      "maximum_layer_states": 4,
+      "mismatches": 0
+    },
+    {
+      "nonterminal_nodes": 3,
+      "keys": 1,
+      "controller_encodings": 360,
+      "ordered_pairs": 129600,
+      "worlds_per_pair": 2,
+      "horizon": 4,
+      "depth_set_equalities": 648000,
+      "reduced_state_occurrences": 878611,
+      "concrete_state_occurrences": 878611,
+      "maximum_layer_states": 2,
+      "mismatches": 0
+    }
+  ],
+  "ordered_pairs": 131904,
+  "depth_set_equalities": 657216,
+  "reduced_state_occurrences": 890465,
+  "concrete_state_occurrences": 890465,
+  "mismatches": 0,
+  "workers": 1,
+  "wall_seconds": 5.100420292000003,
+  "campaign_cpu_seconds": 5.098505432,
+  "process_cpu_seconds": 5.134779999999999,
+  "peak_rss_kib": 15176,
+  "cpu_cap_seconds": 35,
+  "address_space_cap_bytes": 3221225472
+}

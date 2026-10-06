@@ -1,0 +1,22 @@
+{
+  "certified_oracle_comparisons": 139648,
+  "compiler_world_traces": 12384,
+  "nonpruning_denotation_world_checks": 8256,
+  "exact_budget_reduction_instances": 64,
+  "semantic_reduction_instances": 8,
+  "semantic_liveness_nodes": 1584,
+  "selector_family_instances": 6,
+  "path_reconciliation_pairs": 131904,
+  "path_depth_set_equalities": 657216,
+  "path_state_occurrences": 890465,
+  "path_reconciliation_mismatches": 0,
+  "bibliography_entries": 69,
+  "doi_backed_entries": 61,
+  "stable_non_doi_entries": 8,
+  "reference_checks_passed": true,
+  "instrumented_process_cpu_seconds": 31.122614,
+  "instrumented_inner_cpu_seconds": 30.107781715,
+  "max_peak_rss_kib": 73548,
+  "suite_count": 18,
+  "failures": 0
+}

@@ -1,0 +1,5 @@
+suite,pairs,equivalent,inequivalent,max_states,max_width
+Two-node controllers,2304,1166,1138,7,2
+Three-node controllers,129600,44810,84790,7,1
+Workflow policy pairs,7740,5412,2328,8,1
+Selector pairs,4,2,2,1432,8

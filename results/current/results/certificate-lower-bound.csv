@@ -1,0 +1,7 @@
+family,data_keys,selector_keys,mutation_r0_to_r1,certificate_kind,equivalent,expected_least_budget,producer_least_budget,oracle_least_budget,certificate_nodes,first_full_exposure_rank,first_full_exposure_controls,post_data_rank,post_data_controls,exact_data_key_set,first_full_exposure_assignments,post_data_assignments,required_by_family,read_orders_checked,json_round_trip_checked,certificate_accepted_after_round_trip
+reverse-order-dual-result,2,1,False,equivalent,True,equivalent,equivalent,equivalent,16,1,1:1,2,2:2,0;1,4,4,4,True,True,True
+reverse-order-dual-result,2,1,True,inequivalent,False,5,5,5,15,1,1:1,2,2:2,0;1,4,4,4,True,True,True
+reverse-order-dual-result,4,2,False,equivalent,True,equivalent,equivalent,equivalent,72,2,2:2,4,4:4,0;1;2;3,16,16,16,True,True,True
+reverse-order-dual-result,4,2,True,inequivalent,False,8,8,8,71,2,2:2,4,4:4,0;1;2;3,16,16,16,True,True,True
+reverse-order-dual-result,8,3,False,equivalent,True,equivalent,equivalent,equivalent,1432,4,4:4,8,8:8,0;1;2;3;4;5;6;7,256,256,256,True,True,True
+reverse-order-dual-result,8,3,True,inequivalent,False,13,13,13,1431,4,4:4,8,8:8,0;1;2;3;4;5;6;7,256,256,256,True,True,True

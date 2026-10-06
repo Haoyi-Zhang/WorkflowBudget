@@ -1,0 +1,16 @@
+{
+  "suite": "selectors",
+  "cases": 4,
+  "equivalent": 2,
+  "inequivalent": 2,
+  "max_states": 1432,
+  "max_width": 8,
+  "failures": 0,
+  "workers": 1,
+  "wall_seconds": 0.2460404100000062,
+  "campaign_cpu_seconds": 0.24595470300000002,
+  "process_cpu_seconds": 0.304921,
+  "peak_rss_kib": 66256,
+  "cpu_cap_seconds": 35,
+  "address_space_cap_bytes": 3221225472
+}
