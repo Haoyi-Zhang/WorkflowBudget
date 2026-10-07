@@ -31,6 +31,11 @@ jobs:
           ulimit -v 3145728
           ulimit -t 600
           mkdir -p scientific-output
+          # Supplemental metadata-reuse tests are separate from the retained
+          # 30-method receipt contract and cannot be silently skipped by it.
+          timeout --signal=TERM --kill-after=5s 60s python -B -m unittest discover \
+            -s regressions -p 'test_requested_keys.py' -v \
+            2>&1 | tee scientific-output/requested-keys.log
           # One whole-run wall bound, inherited per-process CPU/address bounds,
           # and the existing 35-CPU-second / 40-second core child bounds.
           timeout --signal=TERM --kill-after=10s 600s \

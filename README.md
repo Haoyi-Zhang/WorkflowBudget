@@ -52,6 +52,29 @@ Case 04 separates at budget one. Checker status zero means acceptance under the 
 
 ## Semantic contract
 
+The producer lazily reuses the sorted requested-key tuple for each control pair
+within one comparison invocation, in both projection and full-history modes.
+It does not cache unknown keys, answers, masks, future sets or certificates.
+Memory filtering and post-step projection remain state dependent; the public
+`extensions` helper still recomputes metadata for each direct call. This removes
+repeated set construction/sorting on shared control pairs, not a measured
+speedup or a symbolic-state reduction. Checker and exhaustive oracle are
+unchanged.
+
+Six supplemental portable regressions use their own complete-world interpreter
+and reachability-based future-set reference. They check ordered extension
+answers, cumulative observations, replay, closure/cutoffs and invocation-local
+reuse. Run them with the standard library on any supported Python host:
+
+```sh
+python3 -B -m unittest discover -s regressions -p test_requested_keys.py -v
+```
+
+The scientific CI runs this command as a mandatory separate bounded step before
+the retained campaign. `reproduce.py` still runs its original 30-method core
+suite; the supplemental six are not added to archived campaign denominators or
+old receipt bindings. Running the core command alone does not run this supplement.
+
 A controller pair shares ordered Boolean-key and result alphabets. One immutable total world assigns each key once; every read of that key on either side returns the same value. Each non-halt instruction costs one budget tick, halt pads silently, and observations are cumulative result sets. Equivalence means equality for every common world and every budget, not only terminal equality and not comparison under independently sampled worlds.
 
 Controllers are explicit and acyclic. The implementation admits at most 2,048 nodes per side, 64 keys, eight result labels, and 200,000 proof states; the exhaustive oracle separately caps keys at sixteen. These are admission bounds, not theorem parameters. The source language is finite `fail`, `return`, `split`, and immutable `test`. Cycles, mutation, probability, exceptions, scores, ordering/multiplicity, wall-clock cost, model calls, and production services are outside scope.

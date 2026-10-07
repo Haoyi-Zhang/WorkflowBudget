@@ -8,12 +8,14 @@ from pathlib import Path
 from model import State, future, load, past, successors, tick, validate_pair
 
 
-def extensions(left: dict, right: dict, state: State, fl: list[int], fr: list[int],
-               erase: bool = True):
-    """Enumerate shared-key assignments, never chronological response streams."""
-    reads = sorted({c["nodes"][p]["key"] for c, p in
-                    ((left, state.left), (right, state.right))
-                    if c["nodes"][p]["op"] == "read"})
+def _requested_keys(left: dict, right: dict, p: int, q: int) -> tuple[int, ...]:
+    """Controller metadata only; no memory, masks, or answer caching."""
+    return tuple(sorted({c["nodes"][at]["key"] for c, at in
+                         ((left, p), (right, q))
+                         if c["nodes"][at]["op"] == "read"}))
+
+
+def _extensions_for_reads(left, right, state, fl, fr, reads, erase):
     base = dict(state.memory)
     unknown = [k for k in reads if k not in base]
     for answers in product((0, 1), repeat=len(unknown)):
@@ -27,6 +29,13 @@ def extensions(left: dict, right: dict, state: State, fl: list[int], fr: list[in
         yield State(p, q, a, b, memory), tuple((k, values[k]) for k in reads)
 
 
+def extensions(left: dict, right: dict, state: State, fl: list[int], fr: list[int],
+               erase: bool = True):
+    """Enumerate shared-key assignments, never chronological response streams."""
+    reads = _requested_keys(left, right, state.left, state.right)
+    yield from _extensions_for_reads(left, right, state, fl, fr, reads, erase)
+
+
 def compare(pair: dict, *, erase: bool = True, make_certificate: bool = True,
             max_states: int = 200_000) -> tuple[dict | None, dict]:
     left, right = validate_pair(pair)
@@ -35,12 +44,17 @@ def compare(pair: dict, *, erase: bool = True, make_certificate: bool = True,
     distance = {root: 0}
     previous: dict[State, tuple[State, tuple[tuple[int,int], ...]]] = {}
     queue = deque([root])
+    requested = {}
     transitions = 0
     max_memory = 0
     bad = None
     while queue and bad is None:
         state = queue.popleft()
-        for target, answers in extensions(left, right, state, fl, fr, erase):
+        controls = (state.left, state.right)
+        if controls not in requested:
+            requested[controls] = _requested_keys(left, right, *controls)
+        for target, answers in _extensions_for_reads(
+                left, right, state, fl, fr, requested[controls], erase):
             transitions += 1
             max_memory = max(max_memory, len(target.memory))
             if target in distance:
