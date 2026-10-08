@@ -6,6 +6,13 @@ The artifact checks the finite, acyclic, shared-input model stated in the paper.
 It is designed for deterministic offline evaluation.  It does not claim to be a
 production workflow engine or a proof assistant.
 
+Full reproduction requires a Unix-like host with Python's `resource` module;
+the scientific CI is configured for Ubuntu 24.04 only. Direct Windows checks
+cover the 30-method core suite and two separate six-method regression suites
+(requested-key reuse and delivery-baseline selection). Their success is not a
+full campaign or clean-copy delivery result, and their method counts are not
+added to the retained comparison totals.
+
 ## Entry points
 
 ```bash

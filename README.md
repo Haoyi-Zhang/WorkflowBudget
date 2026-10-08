@@ -83,10 +83,18 @@ reuse. Run them with the standard library on any supported Python host:
 python3 -B -m unittest discover -s regressions -p test_requested_keys.py -v
 ```
 
-The scientific CI runs this command as a mandatory separate bounded step before
-the retained campaign. `reproduce.py` still runs its original 30-method core
-suite; the supplemental six are not added to archived campaign denominators or
-old receipt bindings. Running the core command alone does not run this supplement.
+The scientific CI is configured only for Ubuntu 24.04. It runs the six
+requested-key methods and the six delivery-selection methods as separate
+bounded steps before the full campaign. `reproduce.py` runs the 30-method core
+suite; neither supplemental suite is added to archived campaign denominators
+or old receipt bindings. Running the core command alone runs neither supplement.
+
+On Windows, the core suite can be run directly with
+`python -B -m unittest discover -s tests -p test_certificates.py -v`, alongside
+the two supplemental commands above. Passing these portable checks does not
+execute the 22-command Linux campaign, its resource-limit wrappers, or the full
+clean-copy delivery audit. The retained Ubuntu campaign and Windows regression
+checks are separate evidence cohorts; no Windows CI job is configured.
 
 A controller pair shares ordered Boolean-key and result alphabets. One immutable total world assigns each key once; every read of that key on either side returns the same value. Each non-halt instruction costs one budget tick, halt pads silently, and observations are cumulative result sets. Equivalence means equality for every common world and every budget, not only terminal equality and not comparison under independently sampled worlds.
 
