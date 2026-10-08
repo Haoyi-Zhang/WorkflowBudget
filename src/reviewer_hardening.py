@@ -250,9 +250,9 @@ def _require_equal(actual: Any, expected: Any, label: str) -> None:
         raise RuntimeError(f"{label}: expected {expected!r}, found {actual!r}")
 
 
-def check_result_contract(quick: bool) -> dict[str, Any]:
+def check_result_contract(quick: bool, evidence_root: Path | None = None) -> dict[str, Any]:
     """Validate only the evidence families and counts this project actually claims."""
-    base = RESULTS / "quick" if quick else RESULTS
+    base = evidence_root if evidence_root is not None else (RESULTS / "quick" if quick else RESULTS)
     reference = _required_json(base, "reference-checks.json")
     unit = _required_json(base, "unit-tests.json")
     pilot = _required_json(base, "pilot.json")
@@ -408,8 +408,8 @@ def check_latex_data_dependencies(paper_root: Path | None) -> dict[str, Any]:
     return {"paper_present": True, "tex_files": len(tex_files), "checked_dependencies": refs, "missing": 0, "status": "pass"}
 
 
-def write_outputs(summary: dict[str, Any], *, quick: bool) -> None:
-    destination = RESULTS / "quick" if quick else RESULTS
+def write_outputs(summary: dict[str, Any], *, quick: bool, evidence_root: Path | None = None) -> None:
+    destination = evidence_root if evidence_root is not None else (RESULTS / "quick" if quick else RESULTS)
     destination.mkdir(parents=True, exist_ok=True)
     out = destination / "reviewer-hardening.json"
     out.write_text(json.dumps(summary, indent=2, sort_keys=True) + "\n", encoding="utf-8")
@@ -423,6 +423,8 @@ def write_outputs(summary: dict[str, Any], *, quick: bool) -> None:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--quick", action="store_true", help="run a representative subset")
+    ap.add_argument("--evidence-root", type=Path, default=None,
+                    help="read and write checks in an explicit retained evidence cohort")
     ap.add_argument("--paper-root", type=Path, default=None, help="optionally check manuscript data dependencies")
     args = ap.parse_args(argv)
     checks: dict[str, Any] = {}
@@ -431,7 +433,7 @@ def main(argv: list[str] | None = None) -> int:
         ("static_trust_boundary", lambda: check_static_trust_boundary()),
         ("cli_determinism", lambda: check_cli_determinism(args.quick)),
         ("strict_cli_parsing", lambda: check_strict_cli_parsing(args.quick)),
-        ("result_contract", lambda: check_result_contract(args.quick)),
+        ("result_contract", lambda: check_result_contract(args.quick, args.evidence_root)),
         ("latex_data_dependencies", lambda: check_latex_data_dependencies(args.paper_root)),
     )
     for name, task in tasks:
@@ -443,7 +445,7 @@ def main(argv: list[str] | None = None) -> int:
         "checks": checks,
         "status": "pass",
     }
-    write_outputs(summary, quick=args.quick)
+    write_outputs(summary, quick=args.quick, evidence_root=args.evidence_root)
     print(json.dumps(summary, indent=2, sort_keys=True))
     return 0
 

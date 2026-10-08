@@ -106,7 +106,7 @@ def normalize(value: Any) -> Any:
     return value
 
 
-def result_files(root: Path) -> dict[Path, Path]:
+def result_files(root: Path, *, current_baseline: bool = False) -> dict[Path, Path]:
     base = root / "results"
     out: dict[Path, Path] = {}
     for path in sorted(base.rglob("*")):
@@ -117,6 +117,11 @@ def result_files(root: Path) -> dict[Path, Path]:
             continue
         if path.suffix in {".json", ".jsonl", ".csv", ".tex"}:
             out[rel] = path
+    # Current core tests have a retained 30-test result; the canonical
+    # 27-test record describes the historical suite and remains untouched.
+    current_tests = base / "current" / "results" / "unit-tests.json"
+    if current_baseline and current_tests.is_file():
+        out[Path("results/unit-tests.json")] = current_tests
     return out
 
 
@@ -159,7 +164,7 @@ def csv_rows(path: Path) -> int:
 
 def prepare_workspace(root: Path, workspace: Path) -> dict:
     if workspace.exists():
-        shutil.rmtree(workspace)
+        raise FileExistsError("Choose a new reproduction workspace; existing directories are not removed")
     workspace.mkdir(parents=True)
     clean = workspace / root.name
     shutil.copytree(
@@ -233,7 +238,7 @@ def reconcile_workspace(root: Path, workspace: Path) -> dict:
     full = json.loads((workspace / "full-audit.json").read_text(encoding="utf-8"))
     optimization = json.loads((workspace / "optimization-audit.json").read_text(encoding="utf-8"))
 
-    source_results = result_files(root)
+    source_results = result_files(root, current_baseline=True)
     clean_results = result_files(clean)
     if set(source_results) != set(clean_results):
         missing = sorted(str(p) for p in set(source_results) - set(clean_results))

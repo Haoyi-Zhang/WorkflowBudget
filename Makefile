@@ -7,7 +7,7 @@ full:
 	python3 reproduce.py
 
 hardening:
-	python3 src/reviewer_hardening.py
+	python3 src/reviewer_hardening.py --evidence-root results/current/results
 
 delivery:
 	python3 verify_delivery.py

@@ -41,6 +41,19 @@ python3 verify_delivery.py --stage reconcile --workspace "$AUDIT_WORKSPACE"
 
 The canonical `results/` files retain the historical Unix run. The current source adds three regressions and uses iterative shallow instruction interning instead of recursive expression hashing. The fresh Ubuntu full run passes all 30 tests and all 22 commands, with no semantic mismatch in the finite comparison domains. Its records are in `results/current/results/`, and its complete log is in `results/current/scientific-output/`. Fourteen large CSV/JSONL files are losslessly gzip-compressed; decompress copies before using a consumer that expects their original names. Inputs and certificates match the canonical files byte for byte. The new run takes 33.090 wall seconds and 32.398 child CPU seconds, with peak child RSS of 183,420 KiB. Earlier Windows function-level results and historical Unix timings remain separate cohorts.
 
+`make hardening` selects `results/current/results/` explicitly and stores its
+checks there. The `reproduce.py` wrapper instead checks freshly generated
+canonical outputs (or `results/quick/` in quick mode). During clean-copy
+reconciliation, the source-side unit-test baseline is the retained 30-test
+current cohort; the copy-side result is always the newly generated canonical
+file. Test counts, failures and errors remain exact comparison fields. The
+historical 27-test record is not rewritten. Six separate delivery-selection
+regressions check these rules and refusal to erase an existing workspace:
+
+```sh
+python3 -B -m unittest discover -s regressions -p 'test_delivery_baseline.py' -v
+```
+
 To produce and check one certificate directly:
 
 ```sh
