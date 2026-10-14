@@ -1,0 +1,217 @@
+{
+  "platform": "Windows-11-10.0.28000-SP0",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "execution": "full-domain function-level Windows CPython",
+  "unix_wrappers_executed": false,
+  "unix_resource_limits_exercised": false,
+  "module_bindings": {
+    "campaign": {
+      "sha256": "fea48beca09424f7349777b2bfa2de638d0443222ec05ebe32025e8ce2b6ff6f",
+      "removed_top_level_resource_import_lines": [
+        7
+      ],
+      "resource_main_called": false,
+      "scientific_function_bodies_changed": false
+    },
+    "path_checks": {
+      "sha256": "3ac8b073dbc0dee6d48f8bf5528fa53279992a043e73b2d2875796fbce18481e",
+      "removed_top_level_resource_import_lines": [
+        18
+      ],
+      "resource_main_called": false,
+      "scientific_function_bodies_changed": false
+    },
+    "theory_checks": {
+      "sha256": "a0c17a2ef52a4b443a7876d138ddbbe42361bfb47c22d9ce421c4683003c0440",
+      "removed_top_level_resource_import_lines": [
+        13
+      ],
+      "resource_main_called": false,
+      "scientific_function_bodies_changed": false
+    },
+    "pilot": {
+      "sha256": "33496c6eaa1b19a22ab6402fcf1a527a09f473335adfe83e1f51c615414303e8",
+      "removed_top_level_resource_import_lines": [
+        5
+      ],
+      "resource_main_called": false,
+      "scientific_function_bodies_changed": false
+    }
+  },
+  "suites": {
+    "two-node": {
+      "cases": 2304,
+      "equivalent": 1166,
+      "inequivalent": 1138
+    },
+    "three-node-00": {
+      "cases": 10800,
+      "equivalent": 3358,
+      "inequivalent": 7442
+    },
+    "three-node-01": {
+      "cases": 10800,
+      "equivalent": 2976,
+      "inequivalent": 7824
+    },
+    "three-node-02": {
+      "cases": 10800,
+      "equivalent": 2976,
+      "inequivalent": 7824
+    },
+    "three-node-03": {
+      "cases": 10800,
+      "equivalent": 5088,
+      "inequivalent": 5712
+    },
+    "three-node-04": {
+      "cases": 10800,
+      "equivalent": 2216,
+      "inequivalent": 8584
+    },
+    "three-node-05": {
+      "cases": 10800,
+      "equivalent": 3386,
+      "inequivalent": 7414
+    },
+    "three-node-06": {
+      "cases": 10800,
+      "equivalent": 3487,
+      "inequivalent": 7313
+    },
+    "three-node-07": {
+      "cases": 10800,
+      "equivalent": 3712,
+      "inequivalent": 7088
+    },
+    "three-node-08": {
+      "cases": 10800,
+      "equivalent": 4178,
+      "inequivalent": 6622
+    },
+    "three-node-09": {
+      "cases": 10800,
+      "equivalent": 3555,
+      "inequivalent": 7245
+    },
+    "three-node-10": {
+      "cases": 10800,
+      "equivalent": 4404,
+      "inequivalent": 6396
+    },
+    "three-node-11": {
+      "cases": 10800,
+      "equivalent": 5474,
+      "inequivalent": 5326
+    },
+    "workflows": {
+      "cases": 7740,
+      "equivalent": 5412,
+      "inequivalent": 2328
+    },
+    "selectors": {
+      "cases": 4,
+      "equivalent": 2,
+      "inequivalent": 2
+    },
+    "stress": {
+      "cases": 8,
+      "equivalent": 8,
+      "inequivalent": 0
+    }
+  },
+  "comparisons": 139648,
+  "path_pairs": 131904,
+  "path_depth_sets": 657216,
+  "workflow_trace_checks": 12384,
+  "terminal_checks": 8256,
+  "exact_budget_instances": 64,
+  "relevance_instances": 8,
+  "liveness_nodes": 1584,
+  "selector_instances": 6,
+  "raw_row_reconciliation": {
+    "two-node": {
+      "rows": 2304,
+      "scientific_fields_equal": true,
+      "excluded_variable_fields": []
+    },
+    "three-node-00": {
+      "rows": 10800,
+      "scientific_fields_equal": true,
+      "excluded_variable_fields": []
+    },
+    "three-node-01": {
+      "rows": 10800,
+      "scientific_fields_equal": true,
+      "excluded_variable_fields": []
+    },
+    "three-node-02": {
+      "rows": 10800,
+      "scientific_fields_equal": true,
+      "excluded_variable_fields": []
+    },
+    "three-node-03": {
+      "rows": 10800,
+      "scientific_fields_equal": true,
+      "excluded_variable_fields": []
+    },
+    "three-node-04": {
+      "rows": 10800,
+      "scientific_fields_equal": true,
+      "excluded_variable_fields": []
+    },
+    "three-node-05": {
+      "rows": 10800,
+      "scientific_fields_equal": true,
+      "excluded_variable_fields": []
+    },
+    "three-node-06": {
+      "rows": 10800,
+      "scientific_fields_equal": true,
+      "excluded_variable_fields": []
+    },
+    "three-node-07": {
+      "rows": 10800,
+      "scientific_fields_equal": true,
+      "excluded_variable_fields": []
+    },
+    "three-node-08": {
+      "rows": 10800,
+      "scientific_fields_equal": true,
+      "excluded_variable_fields": []
+    },
+    "three-node-09": {
+      "rows": 10800,
+      "scientific_fields_equal": true,
+      "excluded_variable_fields": []
+    },
+    "three-node-10": {
+      "rows": 10800,
+      "scientific_fields_equal": true,
+      "excluded_variable_fields": []
+    },
+    "three-node-11": {
+      "rows": 10800,
+      "scientific_fields_equal": true,
+      "excluded_variable_fields": []
+    },
+    "workflows": {
+      "rows": 7740,
+      "scientific_fields_equal": true,
+      "excluded_variable_fields": []
+    },
+    "selectors": {
+      "rows": 4,
+      "scientific_fields_equal": true,
+      "excluded_variable_fields": []
+    },
+    "stress": {
+      "rows": 8,
+      "scientific_fields_equal": true,
+      "excluded_variable_fields": [
+        "cpu_seconds"
+      ]
+    }
+  },
+  "wall_seconds": 16.221424500021385
+}

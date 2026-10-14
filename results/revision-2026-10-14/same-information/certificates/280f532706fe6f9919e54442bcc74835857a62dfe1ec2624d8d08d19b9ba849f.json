@@ -1,0 +1,1 @@
+{"budget":3,"kind":"inequivalent","nodes":[{"rank":0,"state":[0,0,0,0,[]]},{"rank":1,"state":[1,1,0,0,[]]},{"rank":1,"state":[2,2,0,0,[[0,1]]]},{"rank":2,"state":[3,3,0,0,[]]},{"rank":2,"state":[6,6,0,0,[]]}],"world":[0,0]}

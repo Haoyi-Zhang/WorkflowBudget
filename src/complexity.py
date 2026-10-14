@@ -9,6 +9,26 @@ from typing import Iterable
 
 from examples import H, E, S, R, controller
 from oracle import observations
+from model import MAX_KEYS, validate, validate_pair
+
+
+def _validated_clauses(clauses, nkeys: int, *, cap: int = MAX_KEYS):
+    """Materialize a local CNF block before shifting or interpreting it.
+
+    A literal must name its declared local block. In particular zero is not
+    Python index -1, and an undersized block cannot overlap a later block.
+    Empty conjunctions/clauses retain their ordinary meanings.
+    """
+    if type(nkeys) is not int or not 0 <= nkeys <= cap:
+        raise ValueError(f"key count must be an integer in [0,{cap}]")
+    try:
+        rows = [list(clause) for clause in clauses]
+    except TypeError as exc:
+        raise ValueError("CNF must be an iterable of literal iterables") from exc
+    if any(type(lit) is not int or lit == 0 or abs(lit) > nkeys
+           for row in rows for lit in row):
+        raise ValueError("literal must be a nonzero integer within its local key block")
+    return rows
 
 
 def _shift_clauses(clauses: Iterable[Iterable[int]], offset: int) -> list[list[int]]:
@@ -67,11 +87,13 @@ def exact_budget_pair(phi: list[list[int]], psi: list[list[int]],
     it separates at ``late`` iff phi is satisfiable.  If both formulas are
     unsatisfiable the controllers are equivalent.
     """
-    if phi_keys < 0 or psi_keys < 0:
-        raise ValueError("negative key count")
+    phi = _validated_clauses(phi, phi_keys)
+    psi = _validated_clauses(psi, psi_keys)
+    nkeys = phi_keys + psi_keys
+    if nkeys > MAX_KEYS:
+        raise ValueError("disjoint formula blocks exceed the controller key cap")
     p = _shift_clauses(phi, 0)
     q = _shift_clauses(psi, phi_keys)
-    nkeys = phi_keys + psi_keys
 
     left_phi = fixed_cnf_expression(p, E(0), S(H))
     right_phi = fixed_cnf_expression(p, S(H), S(H))
@@ -80,14 +102,15 @@ def exact_budget_pair(phi: list[list[int]], psi: list[list[int]],
 
     early = sum(len(c) for c in q) + 1
     late = early + sum(len(c) for c in p) + 1
-    return {"left": controller(left, nkeys, 1),
-            "right": controller(right, nkeys, 1)}, early, late
+    pair = {"left": controller(left, nkeys, 1),
+            "right": controller(right, nkeys, 1)}
+    validate_pair(pair)
+    return pair, early, late
 
 
 def cnf_satisfiable(clauses: list[list[int]], nkeys: int) -> bool:
     """Tiny exhaustive CNF oracle for reduction tests."""
-    if nkeys > 16:
-        raise ValueError("tiny CNF oracle limited to sixteen variables")
+    clauses = _validated_clauses(clauses, nkeys, cap=16)
     for world in product((0, 1), repeat=nkeys):
         ok = True
         for clause in clauses:
@@ -142,8 +165,9 @@ def semantic_irrelevance_controller(clauses: list[list[int]], nkeys: int) -> tup
     A fresh distinguished key x is relevant exactly when ``clauses`` is
     satisfiable: the controller emits iff x is true and the CNF is true.
     """
+    clauses = _validated_clauses(clauses, nkeys, cap=MAX_KEYS-1)
     shifted = _shift_clauses(clauses, 1)
     distinguished = 0
     body = fixed_cnf_expression(shifted, E(0), H)
     expr = R(distinguished, H, body)
-    return controller(expr, nkeys + 1, 1), distinguished
+    return validate(controller(expr, nkeys + 1, 1)), distinguished

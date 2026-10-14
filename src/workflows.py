@@ -38,8 +38,9 @@ def _source_requirements(workflow):
     max_key = -1
     max_result = -1
 
-    def visit(term):
-        nonlocal max_key, max_result
+    pending = [workflow]
+    while pending:
+        term = pending.pop()
         if type(term) is not tuple or not term or type(term[0]) is not str:
             raise ValueError("workflow terms must be nonempty tuples")
         op = term[0]
@@ -53,16 +54,15 @@ def _source_requirements(workflow):
         elif op == "split":
             if len(term) != 3:
                 raise ValueError("split requires two children")
-            visit(term[1]); visit(term[2])
+            pending.extend((term[2], term[1]))
         elif op == "test":
             if len(term) != 4 or type(term[1]) is not int or term[1] < 0:
                 raise ValueError("test requires a nonnegative integer key index and two children")
             max_key = max(max_key, term[1])
-            visit(term[2]); visit(term[3])
+            pending.extend((term[3], term[2]))
         else:
             raise ValueError(f"unknown workflow operation: {op!r}")
 
-    visit(workflow)
     return max_key + 1, max_result + 1
 
 
@@ -93,22 +93,27 @@ def compile_workflow(workflow, policy, *, key_count=None, result_count=None):
 
     tree = []
     masses = []
-    def intern(w):
+    # Assign each syntax occurrence separately, in the same preorder as the
+    # former recursive traversal. Shared tuple objects are not shared tasks.
+    pending_tree = [(workflow, None, None)]
+    while pending_tree:
+        w, parent, field = pending_tree.pop()
         here = len(tree)
-        tree.append(None); masses.append(0)
+        node = {"op": w[0]}
+        tree.append(node); masses.append(0)
+        if parent is not None:
+            tree[parent][field] = here
         op = w[0]
         if op in ("fail","return"):
-            node = {"op":op}
             if op == "return": node["result"] = w[1]
-            mass = 1
         else:
-            l,r = intern(w[-2]),intern(w[-1])
-            node = {"op":op,"left":l,"right":r}
             if op == "test": node["key"] = w[1]
-            mass = 1+masses[l]+masses[r]
-        tree[here] = node; masses[here] = mass
-        return here
-    start = (intern(workflow),)
+            pending_tree.extend(((w[-1], here, "right"), (w[-2], here, "left")))
+    for here in range(len(tree)-1, -1, -1):
+        node = tree[here]
+        masses[here] = 1 if node["op"] in ("fail", "return") else (
+            1 + masses[node["left"]] + masses[node["right"]])
+    start = (0,)
     pending = [start]
     actions = {}
     while pending:

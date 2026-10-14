@@ -1,0 +1,52 @@
+{
+  "left": {
+    "keys": [
+      "x0",
+      "x1"
+    ],
+    "results": [
+      "r0",
+      "r1"
+    ],
+    "start": 0,
+    "nodes": [
+      {
+        "op": "emit",
+        "result": 0,
+        "next": 1
+      },
+      {
+        "op": "step",
+        "next": 2
+      },
+      {
+        "op": "step",
+        "next": 3
+      },
+      {
+        "op": "halt"
+      }
+    ]
+  },
+  "right": {
+    "keys": [
+      "x0",
+      "x1"
+    ],
+    "results": [
+      "r0",
+      "r1"
+    ],
+    "start": 0,
+    "nodes": [
+      {
+        "op": "emit",
+        "result": 0,
+        "next": 1
+      },
+      {
+        "op": "halt"
+      }
+    ]
+  }
+}

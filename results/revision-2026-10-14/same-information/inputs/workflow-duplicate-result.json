@@ -1,0 +1,22 @@
+{
+  "name": "workflow-duplicate-result",
+  "family": "workflow",
+  "index": 2,
+  "source": [
+    "split",
+    [
+      "return",
+      0
+    ],
+    [
+      "split",
+      [
+        "fail"
+      ],
+      [
+        "return",
+        0
+      ]
+    ]
+  ]
+}

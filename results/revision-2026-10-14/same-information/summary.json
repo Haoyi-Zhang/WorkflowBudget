@@ -1,0 +1,224 @@
+{
+  "cases": 21,
+  "trials": 5,
+  "arm_executions": 420,
+  "workflow_traces": 72,
+  "all_arm_inputs_and_answers_equal": true,
+  "measured_host": "Windows-11-10.0.28000-SP0",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "source_hashes": {
+    "budget_solver.py": "5f863b06923e979db53858f2723666d246ce8a6b2ec66b88942f6dc0a186c3a5",
+    "campaign.py": "fea48beca09424f7349777b2bfa2de638d0443222ec05ebe32025e8ce2b6ff6f",
+    "checker.py": "ed2e2cb78d3347844907eea90bdbceadfec557e90b18c1f44a517e3c0d808101",
+    "complexity.py": "7c78309c7788eed1a476b87c305539163d9997802aeea951e262748437063690",
+    "cost_comparison.py": "0c453674991057bfc84e545c629d5ac113a898d6f0398799a39236788842f47b",
+    "examples.py": "dea3c3f0e7d1ef304eb5316c42ab583eeb4879fcdaeb12dcf7d6f9fd83da3412",
+    "model.py": "b65076e23ddd5491b14d1d8f5ee6c5c1ebac555af59d09caae7d9bf0cddf66fb",
+    "negative_controls.py": "84b80e9e5020da2a011d27d3538afad169f4d055be75f65cd8388b8ed46709f0",
+    "oracle.py": "29ae15e1685cf19289720679c874fa05e8535b324497ee70c9ef8ecd0ec96e76",
+    "path_checks.py": "3ac8b073dbc0dee6d48f8bf5528fa53279992a043e73b2d2875796fbce18481e",
+    "pilot.py": "33496c6eaa1b19a22ab6402fcf1a527a09f473335adfe83e1f51c615414303e8",
+    "producer.py": "f6ef2ea9a9b0c140ee4ef7661bdce797f900039b9f9b9f126916f8f923614ee4",
+    "reference_checks.py": "f90058ae8bd8e7478e472cb4b5f7ed75b323e2ab59434b8fc057a60ea4ec8e87",
+    "report.py": "8f7218272641e9fc9147c4234f57db6ccbe4a9efbd32f72949a56a094d2ef5dd",
+    "reviewer_hardening.py": "dc9346e130546a73d8615a6fe020c5f70d95300febaffff03f837a7b7668da3c",
+    "run_tests.py": "6effa9c981a3aacfceec88f32ae1fa24f31851c4e90d911384f00f09543a694b",
+    "theory_checks.py": "a0c17a2ef52a4b443a7876d138ddbbe42361bfb47c22d9ce421c4683003c0440",
+    "workflows.py": "e0d3f115c934a758d7329b77626e1134bda422d47f53b3f03aa3b39b44dac61a"
+  },
+  "total_measurement": "source preparation, file acquisition/validation, solving, certificate write/reparse/check when requested, answer write",
+  "excludes": "process startup, imports, experiment row emission, fsync durability, original-library acquisition and third-party solvers",
+  "maintenance": "fresh pair and invocation-local search each trial; no persistent index or incremental updates",
+  "timing_scope": "warm same-process local measurements, not external workload or performance-superiority evidence",
+  "aggregates": [
+    {
+      "case": "case-01",
+      "family": "curated",
+      "certificate_seconds": 0.0010278000263497233,
+      "projected_no_certificate_seconds": 0.0006482999888248742,
+      "reflexive_no_certificate_seconds": 0.000614099990343675,
+      "complete_world_seconds": 0.0005589000065810978,
+      "certificate_over_projected_ratio": 1.585377208185274
+    },
+    {
+      "case": "case-02",
+      "family": "curated",
+      "certificate_seconds": 0.0009280999947804958,
+      "projected_no_certificate_seconds": 0.0006350000039674342,
+      "reflexive_no_certificate_seconds": 0.0006175000162329525,
+      "complete_world_seconds": 0.0005942000134382397,
+      "certificate_over_projected_ratio": 1.4615747857981007
+    },
+    {
+      "case": "case-03",
+      "family": "curated",
+      "certificate_seconds": 0.0009251000010408461,
+      "projected_no_certificate_seconds": 0.0005991999933030456,
+      "reflexive_no_certificate_seconds": 0.0005779000057373196,
+      "complete_world_seconds": 0.0005271999980323017,
+      "certificate_over_projected_ratio": 1.5438918748000994
+    },
+    {
+      "case": "case-04",
+      "family": "curated",
+      "certificate_seconds": 0.0008182000019587576,
+      "projected_no_certificate_seconds": 0.0005659000016748905,
+      "reflexive_no_certificate_seconds": 0.0005866999854333699,
+      "complete_world_seconds": 0.0005600000149570405,
+      "certificate_over_projected_ratio": 1.4458384865473344
+    },
+    {
+      "case": "case-05",
+      "family": "curated",
+      "certificate_seconds": 0.0008341000066138804,
+      "projected_no_certificate_seconds": 0.0005700999754481018,
+      "reflexive_no_certificate_seconds": 0.0005481999833136797,
+      "complete_world_seconds": 0.0005082999996375293,
+      "certificate_over_projected_ratio": 1.4630767278287868
+    },
+    {
+      "case": "case-06",
+      "family": "curated",
+      "certificate_seconds": 0.0008996999822556973,
+      "projected_no_certificate_seconds": 0.000597400008700788,
+      "reflexive_no_certificate_seconds": 0.0005557000113185495,
+      "complete_world_seconds": 0.0005215000128373504,
+      "certificate_over_projected_ratio": 1.5060260615200598
+    },
+    {
+      "case": "case-07",
+      "family": "curated",
+      "certificate_seconds": 0.0008315000159200281,
+      "projected_no_certificate_seconds": 0.0005634000117424875,
+      "reflexive_no_certificate_seconds": 0.0005703000060748309,
+      "complete_world_seconds": 0.0005226000212132931,
+      "certificate_over_projected_ratio": 1.4758608423673243
+    },
+    {
+      "case": "case-08",
+      "family": "curated",
+      "certificate_seconds": 0.0009369999752379954,
+      "projected_no_certificate_seconds": 0.0006114999996498227,
+      "reflexive_no_certificate_seconds": 0.000607299996772781,
+      "complete_world_seconds": 0.0006290000164881349,
+      "certificate_over_projected_ratio": 1.5322975891652841
+    },
+    {
+      "case": "case-09",
+      "family": "curated",
+      "certificate_seconds": 0.0008869000012055039,
+      "projected_no_certificate_seconds": 0.0005683000199496746,
+      "reflexive_no_certificate_seconds": 0.0005814000032842159,
+      "complete_world_seconds": 0.000529199984157458,
+      "certificate_over_projected_ratio": 1.5606193385037057
+    },
+    {
+      "case": "case-10",
+      "family": "curated",
+      "certificate_seconds": 0.0008828999998513609,
+      "projected_no_certificate_seconds": 0.000583200016990304,
+      "reflexive_no_certificate_seconds": 0.0005803999956697226,
+      "complete_world_seconds": 0.0005212000105530024,
+      "certificate_over_projected_ratio": 1.513888844530057
+    },
+    {
+      "case": "selector-4-0",
+      "family": "selector",
+      "certificate_seconds": 0.001940599991939962,
+      "projected_no_certificate_seconds": 0.001042599993525073,
+      "reflexive_no_certificate_seconds": 0.0009764999849721789,
+      "complete_world_seconds": 0.0008087999885901809,
+      "certificate_over_projected_ratio": 1.8613082716207532
+    },
+    {
+      "case": "selector-4-1",
+      "family": "selector",
+      "certificate_seconds": 0.0020766000088769943,
+      "projected_no_certificate_seconds": 0.0009783999994397163,
+      "reflexive_no_certificate_seconds": 0.0010181000106967986,
+      "complete_world_seconds": 0.0007807000074535608,
+      "certificate_over_projected_ratio": 2.122444818137945
+    },
+    {
+      "case": "selector-8-0",
+      "family": "selector",
+      "certificate_seconds": 0.02523010000004433,
+      "projected_no_certificate_seconds": 0.008238899987190962,
+      "reflexive_no_certificate_seconds": 0.00804210000205785,
+      "complete_world_seconds": 0.014686499984236434,
+      "certificate_over_projected_ratio": 3.0623141486447985
+    },
+    {
+      "case": "selector-8-1",
+      "family": "selector",
+      "certificate_seconds": 0.025768799998331815,
+      "projected_no_certificate_seconds": 0.00829270001850091,
+      "reflexive_no_certificate_seconds": 0.008435700001427904,
+      "complete_world_seconds": 0.01434940000763163,
+      "certificate_over_projected_ratio": 3.1074077129091786
+    },
+    {
+      "case": "dead-4",
+      "family": "dead",
+      "certificate_seconds": 0.0009403000003658235,
+      "projected_no_certificate_seconds": 0.000541799992788583,
+      "reflexive_no_certificate_seconds": 0.00046820001443848014,
+      "complete_world_seconds": 0.0005411000165622681,
+      "certificate_over_projected_ratio": 1.735511282542117
+    },
+    {
+      "case": "dead-8",
+      "family": "dead",
+      "certificate_seconds": 0.0009922000172082335,
+      "projected_no_certificate_seconds": 0.0006104999920353293,
+      "reflexive_no_certificate_seconds": 0.0005443999834824353,
+      "complete_world_seconds": 0.0013667000166606158,
+      "certificate_over_projected_ratio": 1.6252252746152622
+    },
+    {
+      "case": "dead-12",
+      "family": "dead",
+      "certificate_seconds": 0.0011229999945499003,
+      "projected_no_certificate_seconds": 0.0006848000048194081,
+      "reflexive_no_certificate_seconds": 0.0005336000176612288,
+      "complete_world_seconds": 0.017805500014219433,
+      "certificate_over_projected_ratio": 1.639894840313344
+    },
+    {
+      "case": "dead-14",
+      "family": "dead",
+      "certificate_seconds": 0.0012369999894872308,
+      "projected_no_certificate_seconds": 0.0006873999955132604,
+      "reflexive_no_certificate_seconds": 0.0005892000044696033,
+      "complete_world_seconds": 0.07750879999366589,
+      "certificate_over_projected_ratio": 1.7995344741944623
+    },
+    {
+      "case": "workflow-eligibility",
+      "family": "workflow",
+      "certificate_seconds": 0.0010067999828606844,
+      "projected_no_certificate_seconds": 0.0006086999783292413,
+      "reflexive_no_certificate_seconds": 0.0006300999957602471,
+      "complete_world_seconds": 0.0005492999916896224,
+      "certificate_over_projected_ratio": 1.6540167877517384
+    },
+    {
+      "case": "workflow-repeated-condition",
+      "family": "workflow",
+      "certificate_seconds": 0.0009379999828524888,
+      "projected_no_certificate_seconds": 0.0005999999993946403,
+      "reflexive_no_certificate_seconds": 0.0005828999856021255,
+      "complete_world_seconds": 0.0005496000230778009,
+      "certificate_over_projected_ratio": 1.563333306331446
+    },
+    {
+      "case": "workflow-duplicate-result",
+      "family": "workflow",
+      "certificate_seconds": 0.0008535000088158995,
+      "projected_no_certificate_seconds": 0.0005350999999791384,
+      "reflexive_no_certificate_seconds": 0.0005283000064082444,
+      "complete_world_seconds": 0.000499200017657131,
+      "certificate_over_projected_ratio": 1.5950289830857305
+    }
+  ]
+}

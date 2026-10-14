@@ -1,0 +1,1 @@
+{"left":{"keys":["x0","x1"],"nodes":[{"key":0,"one":1,"op":"read","zero":2},{"key":0,"one":4,"op":"read","zero":3},{"key":0,"one":3,"op":"read","zero":4},{"next":4,"op":"emit","result":0},{"op":"halt"}],"results":["r0","r1"],"start":0},"right":{"keys":["x0","x1"],"nodes":[{"next":1,"op":"step"},{"next":2,"op":"step"},{"op":"halt"}],"results":["r0","r1"],"start":0}}

@@ -39,7 +39,7 @@ python3 verify_delivery.py --stage reconcile --workspace "$AUDIT_WORKSPACE"
 
 `src/reference_checks.py` is deliberately offline. It checks the BibTeX against `results/reference-audit.csv`, rejects duplicate and known-misassigned identifiers, verifies the corrected high-risk records, enforces metadata equality and the calibration quotas, and—when invoked by the paper build in no-write mode—requires exactly the same 69 citation keys in the manuscript without mutating the standalone artifact results. The ledger records publisher/DOI or stable catalog pages consulted on 2026-09-16--17, with eleven high-risk or calibration records rechecked on 2026-09-19. The Godefroid--Wolper CAV 1991 chapter's stale ledger year and DOI were aligned with the supplied BibTeX after checking Springer's record on 2026-10-06: publication year 1992, DOI suffix `_32`. That check used publisher metadata and the abstract, not the full text. Offline consistency is not live resolution of every DOI or an exhaustive novelty search.
 
-The canonical `results/` files retain the historical Unix run. The current source adds three regressions and uses iterative shallow instruction interning instead of recursive expression hashing. The fresh Ubuntu full run passes all 30 tests and all 22 commands, with no semantic mismatch in the finite comparison domains. Its records are in `results/current/results/`, and its complete log is in `results/current/scientific-output/`. Fourteen large CSV/JSONL files are losslessly gzip-compressed; decompress copies before using a consumer that expects their original names. Inputs and certificates match the canonical files byte for byte. The new run takes 33.090 wall seconds and 32.398 child CPU seconds, with peak child RSS of 183,420 KiB. Earlier Windows function-level results and historical Unix timings remain separate cohorts.
+The canonical `results/` files retain the historical Unix run. The current source adds three regressions and uses iterative shallow instruction interning instead of recursive expression hashing. The retained pre-repair Ubuntu full run passed all 30 tests and all 22 commands, with no semantic mismatch in the finite comparison domains. Its records are in `results/current/results/`, and its complete log is in `results/current/scientific-output/`. Fourteen large CSV/JSONL files are losslessly gzip-compressed; decompress copies before using a consumer that expects their original names. Inputs and certificates match the canonical files byte for byte. That recorded run took 33.090 wall seconds and 32.398 child CPU seconds, with peak child RSS of 183,420 KiB. Earlier Windows function-level results and historical Unix timings remain separate cohorts.
 
 `make hardening` selects `results/current/results/` explicitly and stores its
 checks there. The `reproduce.py` wrapper instead checks freshly generated
@@ -120,10 +120,36 @@ Controllers are explicit and acyclic. The implementation admits at most 2,048 no
 | `claim_evidence_ledger.csv` | Material claims mapped to proofs, code, experiments, figures, raw results, maturity, and boundary |
 | `external_resources.csv` | Scholarly/official dependencies, acquisition mode, integration, and licensing notes |
 | `verify_delivery.py` | Clean-copy full regeneration, quick-mode non-mutation, normalized result reconciliation, and CLI-chain audit |
+| `plot_certificate_cost.py` | Optional vector figure generator from the retained 21-case comparison and summary; checks the paper CSV projection when supplied |
 
 The two complete controller suites enumerate encodings, including unreachable and semantically duplicate syntax; pair count is not workload diversity. The selector suite is a transparent construction check, not held-out data. The cache ablation compares two modes of the new producer and makes no speed claim against existing tools.
 
 ## Trust and assistance boundary
+
+The source-tree/CNF repair, same-information no-certificate comparison and
+separate current normal/optimized 54-method records are documented in
+`docs/current-comparison.md`. Raw evidence is in
+`results/revision-2026-10-14/`; no archived cohort is overwritten. The comparison
+retains certificate overhead and the validated reflexivity shortcut, not a
+claimed speed advantage. Unix wrappers/limits and public CI remain separate.
+
+The public figure consumer `plot_certificate_cost.py` reads the retained
+`results/revision-2026-10-14/same-information/comparison.csv`, all 420 raw
+`rows.jsonl` executions, and `summary.json`, checking all 84 five-trial arm
+medians. With `--projection`, it also requires every ordered index,
+case and ratio in `paper/figures/certificate-cost.csv` to match. From the
+artifact directory, validate without drawing or redraw the paper figure:
+
+```sh
+python3 -B plot_certificate_cost.py --projection ../paper/figures/certificate-cost.csv --check
+python3 -B plot_certificate_cost.py --projection ../paper/figures/certificate-cost.csv --output ../paper/figures/certificate-cost.pdf
+```
+
+The optional drawing command needs ReportLab and TeX Live's Linux Libertine
+Type 1 font files (`kpsewhich`); core reproduction remains standard-library
+only. This figure consumer does not execute `cost_comparison.py`, make new
+measurements, or modify raw results. Without the paper folder, omit
+`--projection` and select an output path in an existing directory.
 
 Producer, checker, exhaustive oracle, path-set reconciler, workflow interpreter/compiler, and signature oracle use distinct core execution paths, reducing but not eliminating shared conceptual error. The checker recomputes future sets, successors, closure, ranks, and concrete replay; it is handwritten Python rather than a verified kernel.
 

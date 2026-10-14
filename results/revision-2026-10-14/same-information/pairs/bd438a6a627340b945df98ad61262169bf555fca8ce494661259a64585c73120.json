@@ -1,0 +1,1 @@
+{"left":{"keys":["x0","x1"],"nodes":[{"key":0,"one":1,"op":"read","zero":1},{"key":1,"one":2,"op":"read","zero":2},{"op":"halt"}],"results":["r0","r1"],"start":0},"right":{"keys":["x0","x1"],"nodes":[{"next":1,"op":"step"},{"next":2,"op":"step"},{"op":"halt"}],"results":["r0","r1"],"start":0}}

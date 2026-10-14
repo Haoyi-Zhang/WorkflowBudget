@@ -1,0 +1,28 @@
+[
+  {
+    "nonterminal_nodes": 2,
+    "keys": 2,
+    "controller_encodings": 48,
+    "ordered_pairs": 2304,
+    "worlds_per_pair": 4,
+    "horizon": 3,
+    "depth_set_equalities": 9216,
+    "reduced_state_occurrences": 11854,
+    "concrete_state_occurrences": 11854,
+    "maximum_layer_states": 4,
+    "mismatches": 0
+  },
+  {
+    "nonterminal_nodes": 3,
+    "keys": 1,
+    "controller_encodings": 360,
+    "ordered_pairs": 129600,
+    "worlds_per_pair": 2,
+    "horizon": 4,
+    "depth_set_equalities": 648000,
+    "reduced_state_occurrences": 878611,
+    "concrete_state_occurrences": 878611,
+    "maximum_layer_states": 2,
+    "mismatches": 0
+  }
+]

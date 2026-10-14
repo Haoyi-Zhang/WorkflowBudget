@@ -1,0 +1,31 @@
+{
+  "name": "workflow-repeated-condition",
+  "family": "workflow",
+  "index": 1,
+  "source": [
+    "test",
+    0,
+    [
+      "split",
+      [
+        "return",
+        0
+      ],
+      [
+        "return",
+        1
+      ]
+    ],
+    [
+      "test",
+      0,
+      [
+        "fail"
+      ],
+      [
+        "return",
+        0
+      ]
+    ]
+  ]
+}

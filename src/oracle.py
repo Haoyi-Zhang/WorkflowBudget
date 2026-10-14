@@ -112,10 +112,18 @@ def workflow_observations(workflow, policy, world, horizon):
 
 
 def workflow_denotation(w, world):
-    if w[0] == "fail": return frozenset()
-    if w[0] == "return": return frozenset((w[1],))
-    if w[0] == "split":
-        return workflow_denotation(w[1],world) | workflow_denotation(w[2],world)
-    if w[0] == "test":
-        return workflow_denotation(w[2] if world[w[1]] == 0 else w[3],world)
-    raise ValueError("unknown syntax")
+    # Independent iterative traversal of the selected source branches. This
+    # avoids imposing Python's call-stack depth on a valid finite workflow.
+    pending, found = [w], set()
+    while pending:
+        term = pending.pop()
+        op = term[0]
+        if op == "return":
+            found.add(term[1])
+        elif op == "split":
+            pending.extend((term[2], term[1]))
+        elif op == "test":
+            pending.append(term[2] if world[term[1]] == 0 else term[3])
+        elif op != "fail":
+            raise ValueError("unknown syntax")
+    return frozenset(found)

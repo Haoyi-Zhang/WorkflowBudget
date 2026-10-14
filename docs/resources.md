@@ -8,6 +8,13 @@ The final validation comprises eighteen instrumented suites: the theory-construc
 
 The final in-place full wrapper executed 22 child commands in 63.488 wall-seconds, using 70.990607 child CPU-seconds and 263,676 KiB aggregate maximum child RSS. In a clean-copy audit, isolated quick mode completed 6/6 commands in 9.036 wall-seconds with 11.235791 child CPU-seconds and 100,264 KiB maximum child RSS while changing zero canonical files; full mode completed 22/22 commands in 64.054 wall-seconds with 71.651585 child CPU-seconds and 263,664 KiB maximum child RSS. The audit also executed all 27 tests, the bibliography gate, the producer-to-checker command-line example, and an explicit check that optimized Python is rejected before claim-critical assertions can be elided. It reconciled 50 deterministic result files (24 JSON, 16 JSONL, nine CSV, and one generated TeX table); runtime and RSS fields were normalized away. `verify_delivery.py` performs this audit, and `results/clean-reproduction.json` records its result. Filesystem extraction, orchestration, and runtime variability can change timing and memory values. Compilation, literature browsing, visual inspection, and packaging are not presented as algorithm runtime.
 
-For planning, 600 CPU-seconds were conservatively allocated to preliminary and uninstrumented development. This is an allowance, not a measurement. The complete measured and allocated work remains far below the 8 CPU-hour ceiling and leaves the reserved repair/reproduction quarter intact.
+The current source-boundary revision has a separate Windows function-level
+complete-domain run (16.26506929998868 outer process wall seconds) and a
+21-case/four-arm/five-trial cost run (1.5131086999899708 outer wall seconds).
+These do not exercise Unix resource caps or measure Unix peak RSS. The cost
+run includes all declared source preparation, acquisition, solving and requested
+proof I/O/checking per row; it is not a process-startup or persistent-maintenance
+benchmark. All slower certificate results and historical resource records are
+retained. See `docs/current-comparison.md` for exact scope and raw bindings.
 
 Exact semantic reproduction means that deterministic controller/workflow rows, verdicts, least budgets, proof acceptance flags, state counts, width bounds, theory-construction outcomes, generated cases, certificates, CSVs, and LaTeX table inputs agree. CPU time, wall time, RSS, PDF timestamps, and ZIP metadata are variable and excluded from byte-level comparison. A successful command establishes execution and data reconciliation; it does not constitute independent scientific review or a machine-checked proof.

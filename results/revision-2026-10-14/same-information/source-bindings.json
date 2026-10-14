@@ -1,0 +1,254 @@
+[
+  {
+    "case": "case-01",
+    "role": "pairs",
+    "sha256": "c4ff3b4249d15b692fe657415eaf61b4d9215d2f58274aadaa41efbe85cb3493",
+    "bytes": 434
+  },
+  {
+    "case": "case-01",
+    "role": "certificates",
+    "sha256": "dd2b7283492ecbc609d0cddd37b8a6c5e2296805cecee5640dc774044a4ad9e7",
+    "bytes": 332
+  },
+  {
+    "case": "case-02",
+    "role": "pairs",
+    "sha256": "8fa86e96dde6a671303e4ed07a10606d036417140e46d6d11ebec390167d0784",
+    "bytes": 368
+  },
+  {
+    "case": "case-02",
+    "role": "certificates",
+    "sha256": "cba703ed74744052cb9e9ae8eb74f3a1799dc5b44c82f7a5760d34288b4301b5",
+    "bytes": 170
+  },
+  {
+    "case": "case-03",
+    "role": "pairs",
+    "sha256": "e40baac79453118e4de82772ac239031a7d8aeebff8ff0509cc6c09be833674f",
+    "bytes": 317
+  },
+  {
+    "case": "case-03",
+    "role": "certificates",
+    "sha256": "8886c86691961acc475c4650bed490ad926ef0ee06192f5d54e877ba7a2b7681",
+    "bytes": 160
+  },
+  {
+    "case": "case-04",
+    "role": "pairs",
+    "sha256": "d2642fa2c4d5136d23fe5769a6317d8a09c53fe96900666d3628140669831dbf",
+    "bytes": 285
+  },
+  {
+    "case": "case-04",
+    "role": "certificates",
+    "sha256": "2e7b7de26da54bbd2818907121db8bac246609727b07f77087ad79d2429d36a3",
+    "bytes": 91
+  },
+  {
+    "case": "case-05",
+    "role": "pairs",
+    "sha256": "7511b5968b7ab2e2f49a53d4abf057923e593f9db1e1c5f0af069fe75a99caa8",
+    "bytes": 239
+  },
+  {
+    "case": "case-05",
+    "role": "certificates",
+    "sha256": "2e7b7de26da54bbd2818907121db8bac246609727b07f77087ad79d2429d36a3",
+    "bytes": 91
+  },
+  {
+    "case": "case-06",
+    "role": "pairs",
+    "sha256": "113fad91e840c2c29cd388c38bbeed28549638a4ce3f12e4fd4504228b289722",
+    "bytes": 296
+  },
+  {
+    "case": "case-06",
+    "role": "certificates",
+    "sha256": "f30cc653d6b023918523383ccc3b8fbb1a24cd4e2599db25e8f6b3c2ccd9277a",
+    "bytes": 128
+  },
+  {
+    "case": "case-07",
+    "role": "pairs",
+    "sha256": "fc6ef64a95be52d85ba868dc177026af02ed91c30f626717562ee3cec0cc9000",
+    "bytes": 285
+  },
+  {
+    "case": "case-07",
+    "role": "certificates",
+    "sha256": "e6b87eb8ce012f101151843fd1bf9b141170207c897bc8f489df3dedfb6a26f8",
+    "bytes": 160
+  },
+  {
+    "case": "case-08",
+    "role": "pairs",
+    "sha256": "a436ca9a5859968b40139a8da6d5a0f9f8c6cc460415b1ac29f1f187ccba37ed",
+    "bytes": 317
+  },
+  {
+    "case": "case-08",
+    "role": "certificates",
+    "sha256": "d1ac7385cabe621b6d25d92e9df751c2a7f01cbd806c990a1014596ad95da759",
+    "bytes": 219
+  },
+  {
+    "case": "case-09",
+    "role": "pairs",
+    "sha256": "fa2a3c67fa3b3efc080fec11309cb27ae7eb8a4d768828774611823457b9a44f",
+    "bytes": 297
+  },
+  {
+    "case": "case-09",
+    "role": "certificates",
+    "sha256": "0874af0de866f24d80c673cdecdf1b1de4443607c2bbf1feb3c22100de27a0b8",
+    "bytes": 155
+  },
+  {
+    "case": "case-10",
+    "role": "pairs",
+    "sha256": "bd438a6a627340b945df98ad61262169bf555fca8ce494661259a64585c73120",
+    "bytes": 295
+  },
+  {
+    "case": "case-10",
+    "role": "certificates",
+    "sha256": "ea31cf307e8ffe526edaa1dd99888444b5aef6c1ba138f1eb7a7a6ec037263c5",
+    "bytes": 128
+  },
+  {
+    "case": "dead-12",
+    "role": "pairs",
+    "sha256": "7c047d490b41fbb16af8df2fef60a62508e72ca2056611bb85e2fa0efa78f875",
+    "bytes": 1287
+  },
+  {
+    "case": "dead-12",
+    "role": "certificates",
+    "sha256": "e753664e5f0ec6440148af8d9e3ebf41cacf599f5a8a0fc789a647a2f852860a",
+    "bytes": 492
+  },
+  {
+    "case": "dead-14",
+    "role": "pairs",
+    "sha256": "8e744b51ea86836f0435151603a9daa2ca11d3c12423598cccda7d5712d61be0",
+    "bytes": 1479
+  },
+  {
+    "case": "dead-14",
+    "role": "certificates",
+    "sha256": "f645f90420109d9221760f2c1185e79f50242416194827d5c4f90f5ed59d9b8c",
+    "bytes": 562
+  },
+  {
+    "case": "dead-4",
+    "role": "pairs",
+    "sha256": "deb742db2fbfc11583af73afe9ffd5cdc77bb19807fdeabfcd6c0e9c1b713b28",
+    "bytes": 561
+  },
+  {
+    "case": "dead-4",
+    "role": "certificates",
+    "sha256": "3b93da36d491c926f380e57acb62b62855f8772fcaeff3632ab6bf662fa2ab83",
+    "bytes": 224
+  },
+  {
+    "case": "dead-8",
+    "role": "pairs",
+    "sha256": "b472df1432af74e096c890987128180f93473af825623b4847f1a4272b17d11f",
+    "bytes": 913
+  },
+  {
+    "case": "dead-8",
+    "role": "certificates",
+    "sha256": "44790512443b3ea0815d738c1f6cabb58801fa7b968032b28e65a1bffdd5a47d",
+    "bytes": 352
+  },
+  {
+    "case": "selector-4-0",
+    "role": "pairs",
+    "sha256": "ee650c6a1d96f94beff7aee32f1fb219701254370c964fb563d1ba72ebcdfe01",
+    "bytes": 1157
+  },
+  {
+    "case": "selector-4-0",
+    "role": "certificates",
+    "sha256": "579908ed92d600dd0a8d967faab3f2db8d76237b2dc15adbac54430b484c5e38",
+    "bytes": 3622
+  },
+  {
+    "case": "selector-4-1",
+    "role": "pairs",
+    "sha256": "a464a8c5da447f925d61a5109379a0f3fcff562f9a728f81e69a9c83a21411bd",
+    "bytes": 1157
+  },
+  {
+    "case": "selector-4-1",
+    "role": "certificates",
+    "sha256": "36a164db1c1873c76cba72726bb527611691dd59202364eb046fab29ebbb5f98",
+    "bytes": 3623
+  },
+  {
+    "case": "selector-8-0",
+    "role": "pairs",
+    "sha256": "27eab4e14aae8b633e8eede21b10e70712eb41e244274d791b1d6fd09292cff4",
+    "bytes": 2193
+  },
+  {
+    "case": "selector-8-0",
+    "role": "certificates",
+    "sha256": "ca915c64a5db5e1104473dd2b18aabf23bc9c69263dfa911665b8bb20b18a892",
+    "bytes": 109797
+  },
+  {
+    "case": "selector-8-1",
+    "role": "pairs",
+    "sha256": "22127d7503bc8ab54af2c9389ecbdd48437664be3bf7f66ee3ba61b3d1c08a9c",
+    "bytes": 2193
+  },
+  {
+    "case": "selector-8-1",
+    "role": "certificates",
+    "sha256": "be1f489a47212150bdd248b7f933b0e2f1c4207c2f3a451b10c1e271932e81cd",
+    "bytes": 109808
+  },
+  {
+    "case": "workflow-duplicate-result",
+    "role": "pairs",
+    "sha256": "064fa7ad02dc26da5f2b23215b876e081d0bb817c13c9fc3a13fb78754ede768",
+    "bytes": 445
+  },
+  {
+    "case": "workflow-duplicate-result",
+    "role": "certificates",
+    "sha256": "39cb252845059bdca546fd10177d8e26cb91474657c5d4290257d83084e69679",
+    "bytes": 123
+  },
+  {
+    "case": "workflow-eligibility",
+    "role": "pairs",
+    "sha256": "724797d05862668b639f635999d464473a71460016eebf3a1398e5ea574676cf",
+    "bytes": 699
+  },
+  {
+    "case": "workflow-eligibility",
+    "role": "certificates",
+    "sha256": "e9ffd0dfdee61004c13942be222e3e904a3da62a56bffa803111fce4b54ff3b8",
+    "bytes": 295
+  },
+  {
+    "case": "workflow-repeated-condition",
+    "role": "pairs",
+    "sha256": "b7133838abf750c9c654d6bc8d9fef3f45408b481825894c2a4b607eb22a71d4",
+    "bytes": 623
+  },
+  {
+    "case": "workflow-repeated-condition",
+    "role": "certificates",
+    "sha256": "280f532706fe6f9919e54442bcc74835857a62dfe1ec2624d8d08d19b9ba849f",
+    "bytes": 224
+  }
+]
