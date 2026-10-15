@@ -8,8 +8,10 @@ production workflow engine or a proof assistant.
 
 Full reproduction requires a Unix-like host with Python's `resource` module;
 the scientific CI is configured for Ubuntu 24.04 only. Direct Windows checks
-cover the 30-method core suite and two separate six-method regression suites
-(requested-key reuse and delivery-baseline selection). Their success is not a
+cover the 30-method core suite and all five supplemental regression modules
+(26 methods: requested-key reuse, delivery-baseline selection, source boundaries,
+cost comparison, and reproduction-CLI control flow). The scientific workflow runs those modules as separate
+bounded steps before the full campaign. Their success is not a
 full campaign or clean-copy delivery result, and their method counts are not
 added to the retained comparison totals.
 

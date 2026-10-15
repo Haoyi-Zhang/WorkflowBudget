@@ -83,15 +83,21 @@ reuse. Run them with the standard library on any supported Python host:
 python3 -B -m unittest discover -s regressions -p test_requested_keys.py -v
 ```
 
-The scientific CI is configured only for Ubuntu 24.04. It runs the six
-requested-key methods and the six delivery-selection methods as separate
-bounded steps before the full campaign. `reproduce.py` runs the 30-method core
-suite; neither supplemental suite is added to archived campaign denominators
-or old receipt bindings. Running the core command alone runs neither supplement.
+The scientific CI is configured only for Ubuntu 24.04. It runs all five
+supplemental modules as separate bounded steps before the full campaign:
+six requested-key methods, six delivery-selection methods, seven source-boundary
+methods, five cost-comparison methods, and two reproduction-CLI methods. The CLI
+regressions check that help stops after the core parser and quick/full invocations
+still run hardening; they mock subprocess execution, not scientific results.
+`reproduce.py` runs the 30-method core
+suite; supplemental methods are not added to archived campaign denominators
+or old receipt bindings. Running the core command alone runs none of the supplements.
 
 On Windows, the core suite can be run directly with
-`python -B -m unittest discover -s tests -p test_certificates.py -v`, alongside
-the two supplemental commands above. Passing these portable checks does not
+`python -B -m unittest discover -s tests -p test_certificates.py -v`, followed by
+`python -B -m unittest discover -s regressions -p 'test_*.py' -v` to run all
+26 supplemental methods (56 methods total). The retained 54-method cohort predates
+the two CLI regressions and remains unchanged. Passing these portable checks does not
 execute the 22-command Linux campaign, its resource-limit wrappers, or the full
 clean-copy delivery audit. The retained Ubuntu campaign and Windows regression
 checks are separate evidence cohorts; no Windows CI job is configured.

@@ -15,6 +15,10 @@ def run(cmd: list[str]) -> None:
 def main() -> int:
     args=sys.argv[1:]
     run([sys.executable,str(ROOT/'_reproduce_core.py'),*args])
+    # The core parser has already displayed help and exited successfully.
+    # Help is not a reproduction and must not write hardening result files.
+    if '--help' in args or '-h' in args:
+        return 0
     hardening=[sys.executable,str(ROOT/'src/reviewer_hardening.py')]
     if '--quick' in args:
         hardening.append('--quick')
