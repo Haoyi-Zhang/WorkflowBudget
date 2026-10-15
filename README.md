@@ -130,7 +130,7 @@ Controllers are explicit and acyclic. The implementation admits at most 2,048 no
 
 The two complete controller suites enumerate encodings, including unreachable and semantically duplicate syntax; pair count is not workload diversity. The selector suite is a transparent construction check, not held-out data. The cache ablation compares two modes of the new producer and makes no speed claim against existing tools.
 
-## Trust and assistance boundary
+## Trust boundary
 
 The source-tree/CNF repair, same-information no-certificate comparison and
 separate current normal/optimized 54-method records are documented in
@@ -158,6 +158,5 @@ measurements, or modify raw results. Without the paper folder, omit
 `--projection` and select an output path in an existing directory.
 
 Producer, checker, exhaustive oracle, path-set reconciler, workflow interpreter/compiler, and signature oracle use distinct core execution paths, reducing but not eliminating shared conceptual error. The checker recomputes future sets, successors, closure, ranks, and concrete replay; it is handwritten Python rather than a verified kernel.
-
 
 Original artifact code, generated data, and documentation are under `LICENSE`. No cited paper, external executable baseline, or third-party dataset is vendored. Reproduction is fully offline and contains no fabricated repository address.
