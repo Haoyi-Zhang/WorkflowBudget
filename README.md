@@ -6,6 +6,12 @@ The artifact is complete for the declared finite model. Its evidence consists of
 
 ## Reproduce
 
+The optional manuscript diagrams are generated directly by
+`figures/build_figures.py` after installing `figures/requirements.txt`.
+This drawing step is separate from the standard-library scientific campaigns;
+it preserves the workflow observations and live-key projection without taking
+new measurements.
+
 Use Python 3.11 or later on a Unix-like platform that provides Python's `resource` module. No third-party Python package, solver, network connection, GPU, model API, private dataset, account, device, or service is needed. Run from this directory:
 
 ```sh
