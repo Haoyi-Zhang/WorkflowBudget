@@ -166,3 +166,7 @@ measurements, or modify raw results. Without the paper folder, omit
 Producer, checker, exhaustive oracle, path-set reconciler, workflow interpreter/compiler, and signature oracle use distinct core execution paths, reducing but not eliminating shared conceptual error. The checker recomputes future sets, successors, closure, ranks, and concrete replay; it is handwritten Python rather than a verified kernel.
 
 Original artifact code, generated data, and documentation are under `LICENSE`. No cited paper, external executable baseline, or third-party dataset is vendored. Reproduction is fully offline and contains no fabricated repository address.
+
+## Portable path notation
+
+Published execution records use `<PYTHON_ROOT>`, `<NODE_ROOT>`, `<RUNTIME_ROOT>` and `<PROJECTS_ROOT>` for machine-local installation and workspace prefixes. These are path aliases, not literal directories; substitute the corresponding local roots when replaying a command. Recorded interpreter and dependency versions, inputs, measurements and outcomes are unchanged. File inventories bind the published portable serializations; any `recorded_` identity denotes the pre-normalization bytes.

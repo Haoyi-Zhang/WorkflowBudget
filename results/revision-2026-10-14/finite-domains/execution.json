@@ -1,10 +1,10 @@
 {
   "argv": [
-    "C:\\Users\\Administrator\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "<PYTHON_ROOT>\\python.exe",
     "-B",
-    "D:/CodexProjects/2026-07-13/new-chat-4/completion_workspace/library_review/private/substantive_library_completion/P038/portable_campaign.py"
+    "<PROJECTS_ROOT>/2026-07-13/new-chat-4/completion_workspace/library_review/private/substantive_library_completion/P038/portable_campaign.py"
   ],
-  "cwd": "D:\\CodexProjects\\2026-07-13\\new-chat-4\\completion_workspace\\library_review\\private\\substantive_library_completion\\P038\\full-domains-reconciled",
+  "cwd": "<PROJECTS_ROOT>\\2026-07-13\\new-chat-4\\completion_workspace\\library_review\\private\\substantive_library_completion\\P038\\full-domains-reconciled",
   "exit_code": 0,
   "wall_seconds": 16.26506929998868,
   "platform": "Windows-11-10.0.28000-SP0",
@@ -50,9 +50,9 @@
   "environment": {
     "PYTHONDONTWRITEBYTECODE": "1",
     "PYTHONUTF8": "1",
-    "TMP": "D:\\CodexProjects\\2026-07-13\\new-chat-4\\completion_workspace\\library_review\\private\\substantive_library_completion\\P038\\full-domains-reconciled\\tmp",
-    "TEMP": "D:\\CodexProjects\\2026-07-13\\new-chat-4\\completion_workspace\\library_review\\private\\substantive_library_completion\\P038\\full-domains-reconciled\\tmp",
-    "PYTHONPATH": "D:\\CodexProjects\\wg-check\\substantive-library\\P038\\artifact\\src;D:\\CodexProjects\\wg-check\\substantive-library\\P038\\artifact",
-    "P038_OUTPUT": "D:\\CodexProjects\\2026-07-13\\new-chat-4\\completion_workspace\\library_review\\private\\substantive_library_completion\\P038\\full-domains-reconciled"
+    "TMP": "<PROJECTS_ROOT>\\2026-07-13\\new-chat-4\\completion_workspace\\library_review\\private\\substantive_library_completion\\P038\\full-domains-reconciled\\tmp",
+    "TEMP": "<PROJECTS_ROOT>\\2026-07-13\\new-chat-4\\completion_workspace\\library_review\\private\\substantive_library_completion\\P038\\full-domains-reconciled\\tmp",
+    "PYTHONPATH": "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P038\\artifact\\src;<PROJECTS_ROOT>\\wg-check\\substantive-library\\P038\\artifact",
+    "P038_OUTPUT": "<PROJECTS_ROOT>\\2026-07-13\\new-chat-4\\completion_workspace\\library_review\\private\\substantive_library_completion\\P038\\full-domains-reconciled"
   }
 }
