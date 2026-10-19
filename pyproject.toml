@@ -5,7 +5,6 @@ description = "Certificates and exhaustive checks for budgeted finite workflow s
 requires-python = ">=3.11"
 dependencies = []
 authors = [
-  {name = "Haoyi Zhang"},
   {name = "Huaijin Ran"},
 ]
 
