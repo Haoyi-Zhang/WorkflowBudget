@@ -4,11 +4,11 @@
     "-B",
     "<PROJECTS_ROOT>/wg-check/substantive-library/P038/artifact/src/cost_comparison.py",
     "--out",
-    "<PROJECTS_ROOT>/2026-07-13/new-chat-4/completion_workspace/library_review/private/substantive_library_completion/P038/same-information/evidence",
+    "<WORK_ROOT>/same-information/evidence",
     "--repeats",
     "5"
   ],
-  "cwd": "<PROJECTS_ROOT>\\2026-07-13\\new-chat-4\\completion_workspace\\library_review\\private\\substantive_library_completion\\P038\\same-information",
+  "cwd": "<WORK_ROOT>/same-information",
   "exit_code": 0,
   "wall_seconds": 1.5131086999899708,
   "platform": "Windows-11-10.0.28000-SP0",
@@ -54,9 +54,9 @@
   "environment": {
     "PYTHONDONTWRITEBYTECODE": "1",
     "PYTHONUTF8": "1",
-    "TMP": "<PROJECTS_ROOT>\\2026-07-13\\new-chat-4\\completion_workspace\\library_review\\private\\substantive_library_completion\\P038\\same-information\\tmp",
-    "TEMP": "<PROJECTS_ROOT>\\2026-07-13\\new-chat-4\\completion_workspace\\library_review\\private\\substantive_library_completion\\P038\\same-information\\tmp",
+    "TMP": "<WORK_ROOT>/same-information/tmp",
+    "TEMP": "<WORK_ROOT>/same-information/tmp",
     "PYTHONPATH": "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P038\\artifact\\src;<PROJECTS_ROOT>\\wg-check\\substantive-library\\P038\\artifact",
-    "P038_OUTPUT": "<PROJECTS_ROOT>\\2026-07-13\\new-chat-4\\completion_workspace\\library_review\\private\\substantive_library_completion\\P038\\same-information"
+    "P038_OUTPUT": "<WORK_ROOT>/same-information"
   }
 }

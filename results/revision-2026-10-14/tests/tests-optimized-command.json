@@ -3,9 +3,9 @@
     "<PYTHON_ROOT>\\python.exe",
     "-B",
     "-O",
-    "<PROJECTS_ROOT>/2026-07-13/new-chat-4/completion_workspace/library_review/private/substantive_library_completion/P038/scientific_tests.py"
+    "<WORK_ROOT>/scientific_tests.py"
   ],
-  "cwd": "<PROJECTS_ROOT>\\2026-07-13\\new-chat-4\\completion_workspace\\library_review\\private\\substantive_library_completion\\P038\\tests-final-optimized",
+  "cwd": "<WORK_ROOT>/tests-final-optimized",
   "exit_code": 0,
   "wall_seconds": 0.7767095000017434,
   "platform": "Windows-11-10.0.28000-SP0",
@@ -51,9 +51,9 @@
   "environment": {
     "PYTHONDONTWRITEBYTECODE": "1",
     "PYTHONUTF8": "1",
-    "TMP": "<PROJECTS_ROOT>\\2026-07-13\\new-chat-4\\completion_workspace\\library_review\\private\\substantive_library_completion\\P038\\tests-final-optimized\\tmp",
-    "TEMP": "<PROJECTS_ROOT>\\2026-07-13\\new-chat-4\\completion_workspace\\library_review\\private\\substantive_library_completion\\P038\\tests-final-optimized\\tmp",
+    "TMP": "<WORK_ROOT>/tests-final-optimized/tmp",
+    "TEMP": "<WORK_ROOT>/tests-final-optimized/tmp",
     "PYTHONPATH": "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P038\\artifact\\src;<PROJECTS_ROOT>\\wg-check\\substantive-library\\P038\\artifact",
-    "P038_OUTPUT": "<PROJECTS_ROOT>\\2026-07-13\\new-chat-4\\completion_workspace\\library_review\\private\\substantive_library_completion\\P038\\tests-final-optimized"
+    "P038_OUTPUT": "<WORK_ROOT>/tests-final-optimized"
   }
 }
