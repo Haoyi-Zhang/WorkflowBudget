@@ -159,7 +159,11 @@ python3 -B plot_certificate_cost.py --projection ../paper/figures/certificate-co
 
 The optional drawing command needs ReportLab and TeX Live's Linux Libertine
 Type 1 font files (`kpsewhich`); core reproduction remains standard-library
-only. This figure consumer does not execute `cost_comparison.py`, make new
+only. The companion paper's default `build.py` calls this consumer with its
+paper projection and output PDF, as well as the state-growth CSV consumer,
+before TeX. Its `paper/requirements.txt` declares the drawing dependencies;
+missing or invalid data/dependencies stop that build without a cached fallback.
+This figure consumer does not execute `cost_comparison.py`, make new
 measurements, or modify raw results. Without the paper folder, omit
 `--projection` and select an output path in an existing directory.
 
