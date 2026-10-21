@@ -16,7 +16,7 @@ from pathlib import Path
 from typing import Dict, Iterable, Tuple
 
 EXPECTED_COUNT = 69
-CHECKED_ON = {"2026-09-16", "2026-09-17", "2026-09-19", "2026-10-06"}
+CHECKED_ON = {"2026-09-16", "2026-09-17", "2026-09-19", "2026-10-06", "2026-10-21"}
 
 CORRECTED_DOIS = {
     "li2025encompass": "10.52202/085713-3533",
